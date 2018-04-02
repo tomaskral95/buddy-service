@@ -6,7 +6,7 @@ import java.util.Date;
 import java.util.List;
 
 @Entity
-@Table(name = "STUDENT")
+@Table(name = "STUDENT ")
 public class Student {
 
     private Long id;

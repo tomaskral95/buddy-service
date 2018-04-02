@@ -7,8 +7,9 @@
 http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
 
     <tx:annotation-driven/>
-    <context:property-placeholder location="classpath:jdbc-connection.properties"/>
+    <context:property-placeholder location="classpath:jdbc-connection-test.properties"/>
 
+    <context:component-scan base-package="com.buddyservice.repository"/>
     <context:component-scan base-package="com.buddyservice.domain"/>
     <jpa:repositories base-package="com.buddyservice.repository" />
 
@@ -28,6 +29,9 @@ http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
                 <prop key="hibernate.hbm2ddl.auto">create</prop>
                 <prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>
                 <prop key="hibernate.show_sql">true</prop>
+                <prop key="hibernate.connection.charset">utf8</prop>
+                <prop key="hibernate.connection.characterEncoding">utf8</prop>
+                <prop key="hibernate.connection.useUnicode">true</prop>
             </props>
         </property>
     </bean>

@@ -105,6 +105,13 @@
             <version>6.0.6</version>
         </dependency>
 
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <version>1.4.197</version>
+            <scope>test</scope>
+        </dependency>
+
         <!-- GROOVY SPOCK DEPENDENCIES -->
         <dependency>
             <groupId>org.codehaus.groovy</groupId>
