@@ -4,6 +4,7 @@ import com.buddyservice.domain.Adresa
 import com.buddyservice.domain.Pohlavi
 import com.buddyservice.domain.Student
 import com.buddyservice.repository.IStudentRepository
+import com.buddyservice.service.StudentService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.test.context.ContextConfiguration
 import spock.lang.Specification
@@ -45,5 +46,7 @@ class PersistEntityIT extends Specification{
         then:""
             assert buddyRepository != null
             assert foundStudent.size() > 0
+
     }
+
 }
