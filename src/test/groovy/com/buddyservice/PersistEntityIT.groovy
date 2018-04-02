@@ -54,6 +54,7 @@ class PersistEntityIT extends Specification {
             assert student.statniPrislusnost == obtainedStudent.statniPrislusnost
             assert student.telefon == obtainedStudent.telefon
             assert student.email == obtainedStudent.email
+
             // Comparing ADDRESS 1
             assert student.adresy[0].stat == obtainedStudent.adresy[0].stat
             assert student.adresy[0].mesto == obtainedStudent.adresy[0].mesto
