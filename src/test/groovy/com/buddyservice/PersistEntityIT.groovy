@@ -46,4 +46,5 @@ class PersistEntityIT extends Specification{
             assert buddyRepository != null
             assert foundStudent.size() > 0
     }
+
 }
