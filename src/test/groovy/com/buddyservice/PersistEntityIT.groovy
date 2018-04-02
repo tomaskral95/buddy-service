@@ -4,19 +4,18 @@ import com.buddyservice.domain.Adresa
 import com.buddyservice.domain.Pohlavi
 import com.buddyservice.domain.Student
 import com.buddyservice.repository.IStudentRepository
-import com.buddyservice.service.StudentService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.test.context.ContextConfiguration
 import spock.lang.Specification
 
 @ContextConfiguration(locations = ["classpath:jdbc-connection-test-context.xml"])
-class PersistEntityIT extends Specification{
+class PersistEntityIT extends Specification {
 
     @Autowired
     private IStudentRepository buddyRepository
 
     def "Test connection to db through JpaRepository"() {
-        given:"Preparing data for database persist test"
+        given: "Preparing data for database persist test"
             def student = new Student(
                     xname: "krat08",
                     jmeno: "Tomáš",
@@ -40,13 +39,31 @@ class PersistEntityIT extends Specification{
                     telefon: 731373927,
                     email: "krat08@vse.cz"
             )
-        when:"Persist and select from database"
+        when: "Persist and select from database"
             buddyRepository.save(student)
-            def foundStudent = buddyRepository.findAll()
-        then:""
+            def foundStudents = buddyRepository.findAll()
+            def obtainedStudent = foundStudents.get(0)
+        then: "Compare persisted and obtained object"
             assert buddyRepository != null
-            assert foundStudent.size() > 0
+            assert foundStudents.size() > 0
 
+            assert student.xname == obtainedStudent.xname
+            assert student.jmeno == obtainedStudent.jmeno
+            assert student.prijmeni == obtainedStudent.prijmeni
+            assert student.pohlavi == obtainedStudent.pohlavi
+            assert student.statniPrislusnost == obtainedStudent.statniPrislusnost
+            assert student.telefon == obtainedStudent.telefon
+            assert student.email == obtainedStudent.email
+
+            assert student.adresy[0].stat == obtainedStudent.adresy[0].stat
+            assert student.adresy[0].mesto == obtainedStudent.adresy[0].mesto
+            assert student.adresy[0].ulice == obtainedStudent.adresy[0].ulice
+            assert student.adresy[0].cisloPopisne == obtainedStudent.adresy[0].cisloPopisne
+
+            assert student.adresy[1].stat == obtainedStudent.adresy[1].stat
+            assert student.adresy[1].mesto == obtainedStudent.adresy[1].mesto
+            assert student.adresy[1].ulice == obtainedStudent.adresy[1].ulice
+            assert student.adresy[1].cisloPopisne == obtainedStudent.adresy[1].cisloPopisne
     }
 
 }

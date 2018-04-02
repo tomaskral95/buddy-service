@@ -1,7 +1,9 @@
 package com.buddyservice.domain;
 
 import javax.persistence.*;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "STUDENT")
@@ -95,13 +97,27 @@ public class Student {
     }
 
     @Column(name = "ADRESA")
-    @OneToMany(mappedBy = "student", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "student", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     public List<Adresa> getAdresy() {
+        if (adresy == null ) {
+            adresy = new ArrayList<>();
+        }
         return adresy;
     }
 
     public void setAdresy(List<Adresa> adresy) {
+        for(Adresa adresa : adresy) {
+            adresa.setStudent(this);
+        }
         this.adresy = adresy;
+    }
+
+    public Adresa addAdresa(Adresa adresa) {
+        if (adresa != null) {
+            getAdresy().add(adresa);
+            adresa.setStudent(this);
+        }
+        return adresa;
     }
 
     @Column(name = "TELEFON")
@@ -122,11 +138,5 @@ public class Student {
         this.email = email;
     }
 
-    public void addAdresa(Adresa adresa) {
-        this.adresy.add(adresa);
-    }
 
-    public Student() {
-        this.adresy = new ArrayList<>();
-    }
 }
