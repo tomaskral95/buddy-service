@@ -60,8 +60,8 @@ public class Adresa {
         this.cisloPopisne = cisloPopisne;
     }
 
-    @ManyToOne
-    @JoinColumn(name="XNAME")
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "XNAME")
     public Student getStudent() {
         return student;
     }
@@ -69,4 +69,5 @@ public class Adresa {
     public void setStudent(Student student) {
         this.student = student;
     }
+
 }
