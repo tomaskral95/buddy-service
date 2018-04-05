@@ -1,13 +1,12 @@
 package com.buddyservice.domain;
 
 import javax.persistence.*;
-import java.util.*;
+import java.util.Date;
 
 @Entity
 @Table(name = "STUDENT")
 public class Student {
 
-    private Long id;
     private String xname;
     private String jmeno;
     private String prijmeni;
@@ -15,20 +14,9 @@ public class Student {
     private Date datumNarozeni;
     private Pohlavi pohlavi;
     private String statniPrislusnost;
-    private List<Adresa> adresy;
+    private Adresa adresa;
     private String telefon;
     private String email;
-
-
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "ID")
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     @Id
     @Column(name = "XNAME")
@@ -58,7 +46,7 @@ public class Student {
         this.prijmeni = prijmeni;
     }
 
-    @Column(name = "titul")
+    @Column(name = "TITUL")
     public String getTitul() {
         return titul;
     }
@@ -68,6 +56,7 @@ public class Student {
     }
 
     @Column(name = "DATUM_NAROZENI")
+    @Temporal(TemporalType.DATE)
     public Date getDatumNarozeni() {
         return datumNarozeni;
     }
@@ -94,14 +83,16 @@ public class Student {
         this.statniPrislusnost = statniPrislusnost;
     }
 
-    @Column(name = "ADRESA")
-    @OneToMany(mappedBy = "student", cascade = CascadeType.ALL)
-    public List<Adresa> getAdresy() {
-        return adresy;
+    @OneToOne(mappedBy = "student", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    public Adresa getAdresa() {
+        return adresa;
     }
 
-    public void setAdresy(List<Adresa> adresy) {
-        this.adresy = adresy;
+    public void setAdresa(Adresa adresa) {
+        if (adresa != null) {
+            adresa.setStudent(this);
+        }
+        this.adresa = adresa;
     }
 
     @Column(name = "TELEFON")
@@ -122,11 +113,4 @@ public class Student {
         this.email = email;
     }
 
-    public void addAdresa(Adresa adresa) {
-        this.adresy.add(adresa);
-    }
-
-    public Student() {
-        this.adresy = new ArrayList<>();
-    }
 }
