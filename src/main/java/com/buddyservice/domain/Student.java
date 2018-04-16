@@ -1,13 +1,17 @@
 package com.buddyservice.domain;
 
+import org.hibernate.annotations.JoinColumnOrFormula;
+
 import javax.persistence.*;
-import java.util.Date;
+import java.util.*;
 
 @Entity
 @Table(name = "STUDENT")
 public class Student {
 
     private String xname;
+    private String rodneCislo;
+    private String heslo;
     private String jmeno;
     private String prijmeni;
     private String titul;
@@ -17,8 +21,19 @@ public class Student {
     private Adresa adresa;
     private String telefon;
     private String email;
+    private boolean zahranicni;
+    private Set<Akce> akce;
 
     @Id
+    @Column(name = "ROCNE_CISLO")
+    public String getRodneCislo() {
+        return rodneCislo;
+    }
+
+    public void setRodneCislo(String rodneCislo) {
+        this.rodneCislo = rodneCislo;
+    }
+
     @Column(name = "XNAME")
     public String getXname() {
         return xname;
@@ -56,7 +71,6 @@ public class Student {
     }
 
     @Column(name = "DATUM_NAROZENI")
-    @Temporal(TemporalType.DATE)
     public Date getDatumNarozeni() {
         return datumNarozeni;
     }
@@ -83,7 +97,8 @@ public class Student {
         this.statniPrislusnost = statniPrislusnost;
     }
 
-    @OneToOne(mappedBy = "student", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name = "ID_ADRESA")
     public Adresa getAdresa() {
         return adresa;
     }
@@ -113,4 +128,58 @@ public class Student {
         this.email = email;
     }
 
+    @Column(name = "ZAHRANICNI")
+    public boolean isZahranicni() {
+        return zahranicni;
+    }
+
+    public void setZahranicni(boolean zahranicni) {
+        if (zahranicni){
+            xname = null;
+        }
+        this.zahranicni = zahranicni;
+    }
+
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "STUDENT_AKCE",
+            joinColumns = {@JoinColumn(name = "RODNE_CISLO")},
+            inverseJoinColumns = {@JoinColumn(name = "ID_AKCE")}
+    )
+    public Set<Akce> getAkce() {
+        if (akce == null) {
+            this.akce = new HashSet<>();
+        }
+        return akce;
+    }
+
+    public void setAkce(Set<Akce> akce) {
+        for (Akce a : akce) {
+            a.getStudenti().add(this);
+        }
+        this.akce = akce;
+    }
+
+    public void addAkce(Akce akce) {
+        if (akce != null) {
+            getAkce().add(akce);
+            akce.getStudenti().add(this);
+        }
+    }
+
+    public void removeAkce(Akce akce) {
+        if (akce != null) {
+            getAkce().remove(akce);
+            akce.getStudenti().remove(this);
+        }
+    }
+
+    @Column(name = "HESLO")
+    public String getHeslo() {
+        return heslo;
+    }
+
+    public void setHeslo(String heslo) {
+        this.heslo = heslo;
+    }
 }

@@ -1,37 +1,37 @@
 package com.buddyservice.domain;
 
 import javax.persistence.*;
-import java.util.Date;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "AKCE")
 public class Akce {
-
-    private Long id;
-    // TODO Druh akce
+    private Long idAkce;
     private DruhAkce druhAkce;
     private String nazev;
-    private Date datum;
-    private Date casOd;
-    private Date casDo;
+    private String datum;
+    private String casOd;
+    private String casDo;
     private Adresa misto;
     private String popis;
     private double cena;
     private int kapacita;
+    private Set<Student> studenti;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "ID")
-    public Long getId() {
-        return id;
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @Column(name = "ID_AKCE")
+    public Long getIdAkce() {
+        return idAkce;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setIdAkce(Long idAkce) {
+        this.idAkce = idAkce;
     }
 
-    @Column(name = "DRUH")
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name = "ID_DRUH")
     public DruhAkce getDruhAkce() {
         return druhAkce;
     }
@@ -49,43 +49,43 @@ public class Akce {
         this.nazev = nazev;
     }
 
-    @Temporal(TemporalType.DATE)
     @Column(name = "DATUM")
-    public Date getDatum() {
+    public String getDatum() {
         return datum;
     }
 
-    public void setDatum(Date datum) {
+    public void setDatum(String datum) {
         this.datum = datum;
     }
 
-    @Temporal(TemporalType.TIME)
-    @Column(name = "CAS_OD")
-    public Date getCasOd() {
+    @Column(name = "CAD_OD")
+    public String getCasOd() {
         return casOd;
     }
 
-    public void setCasOd(Date casOd) {
+    public void setCasOd(String casOd) {
         this.casOd = casOd;
     }
 
-    @Temporal(TemporalType.TIME)
     @Column(name = "CAS_DO")
-    public Date getCasDo() {
+    public String getCasDo() {
         return casDo;
     }
 
-    public void setCasDo(Date casDo) {
+    public void setCasDo(String casDo) {
         this.casDo = casDo;
     }
 
-    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name = "ID")
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name = "ID_ADRESA")
     public Adresa getMisto() {
         return misto;
     }
 
     public void setMisto(Adresa misto) {
+        if (misto != null) {
+            misto.getAkce().add(this);
+        }
         this.misto = misto;
     }
 
@@ -114,6 +114,18 @@ public class Akce {
 
     public void setKapacita(int kapacita) {
         this.kapacita = kapacita;
+    }
+
+    @ManyToMany(mappedBy = "akce")
+    public Set<Student> getStudenti() {
+        if (studenti == null) {
+            this.studenti = new HashSet<>();
+        }
+        return studenti;
+    }
+
+    public void setStudenti(Set<Student> studenti) {
+        this.studenti = studenti;
     }
 
 }
