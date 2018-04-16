@@ -10,12 +10,8 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public class StudentService {
 
-    private IStudentRepository buddyRepository;
-
     @Autowired
-    public StudentService(IStudentRepository buddyRepository) {
-        this.buddyRepository = buddyRepository;
-    }
+    private IStudentRepository buddyRepository;
 
     public void saveBuddy(Student student) {
         buddyRepository.save(student);
