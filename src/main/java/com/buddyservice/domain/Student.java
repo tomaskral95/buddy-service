@@ -1,38 +1,38 @@
 package com.buddyservice.domain;
 
+import org.hibernate.annotations.JoinColumnOrFormula;
+
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 @Entity
-@Table(name = "STUDENT ")
+@Table(name = "STUDENT")
 public class Student {
 
-    private Long id;
     private String xname;
+    private String rodneCislo;
     private String jmeno;
     private String prijmeni;
     private String titul;
     private Date datumNarozeni;
     private Pohlavi pohlavi;
     private String statniPrislusnost;
-    private List<Adresa> adresy;
+    private Adresa adresa;
     private String telefon;
     private String email;
-
-
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "ID")
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
+    private boolean zahranicni;
+    private Set<Akce> akce;
 
     @Id
+    @Column(name = "ROCNE_CISLO")
+    public String getRodneCislo() {
+        return rodneCislo;
+    }
+
+    public void setRodneCislo(String rodneCislo) {
+        this.rodneCislo = rodneCislo;
+    }
+
     @Column(name = "XNAME")
     public String getXname() {
         return xname;
@@ -60,7 +60,7 @@ public class Student {
         this.prijmeni = prijmeni;
     }
 
-    @Column(name = "titul")
+    @Column(name = "TITUL")
     public String getTitul() {
         return titul;
     }
@@ -96,28 +96,17 @@ public class Student {
         this.statniPrislusnost = statniPrislusnost;
     }
 
-    @Column(name = "ADRESA")
-    @OneToMany(mappedBy = "student", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    public List<Adresa> getAdresy() {
-        if (adresy == null ) {
-            adresy = new ArrayList<>();
-        }
-        return adresy;
-    }
-
-    public void setAdresy(List<Adresa> adresy) {
-        for(Adresa adresa : adresy) {
-            adresa.setStudent(this);
-        }
-        this.adresy = adresy;
-    }
-
-    public Adresa addAdresa(Adresa adresa) {
-        if (adresa != null) {
-            getAdresy().add(adresa);
-            adresa.setStudent(this);
-        }
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name = "ID_ADRESA")
+    public Adresa getAdresa() {
         return adresa;
+    }
+
+    public void setAdresa(Adresa adresa) {
+        if (adresa != null) {
+            adresa.setStudent(this);
+        }
+        this.adresa = adresa;
     }
 
     @Column(name = "TELEFON")
@@ -138,5 +127,49 @@ public class Student {
         this.email = email;
     }
 
+    @Column(name = "ZAHRANICNI")
+    public boolean isZahranicni() {
+        return zahranicni;
+    }
 
+    public void setZahranicni(boolean zahranicni) {
+        if (zahranicni){
+            xname = null;
+        }
+        this.zahranicni = zahranicni;
+    }
+
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "STUDENT_AKCE",
+            joinColumns = {@JoinColumn(name = "RODNE_CISLO")},
+            inverseJoinColumns = {@JoinColumn(name = "ID_AKCE")}
+    )
+    public Set<Akce> getAkce() {
+        if (akce == null) {
+            this.akce = new HashSet<>();
+        }
+        return akce;
+    }
+
+    public void setAkce(Set<Akce> akce) {
+        for (Akce a : akce) {
+            a.getStudenti().add(this);
+        }
+        this.akce = akce;
+    }
+
+    public void addAkce(Akce akce) {
+        if (akce != null) {
+            getAkce().add(akce);
+            akce.getStudenti().add(this);
+        }
+    }
+
+    public void removeAkce(Akce akce) {
+        if (akce != null) {
+            getAkce().remove(akce);
+            akce.getStudenti().remove(this);
+        }
+    }
 }

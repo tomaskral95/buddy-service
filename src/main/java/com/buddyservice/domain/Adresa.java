@@ -1,6 +1,8 @@
 package com.buddyservice.domain;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "ADRESA")
@@ -12,9 +14,10 @@ public class Adresa {
     private String ulice;
     private int cisloPopisne;
     private Student student;
+    private Set<Akce> akce;
 
     @Id
-    @Column(name = "ID")
+    @Column(name = "ID_ADRESA")
     @GeneratedValue(strategy = GenerationType.AUTO)
     public Long getId() {
         return id;
@@ -60,13 +63,29 @@ public class Adresa {
         this.cisloPopisne = cisloPopisne;
     }
 
-    @ManyToOne
-    @JoinColumn(name="XNAME")
+    @OneToOne(mappedBy = "adresa", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     public Student getStudent() {
         return student;
     }
 
     public void setStudent(Student student) {
         this.student = student;
+    }
+
+    @OneToMany(mappedBy = "misto", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    public Set<Akce> getAkce() {
+        if (akce == null) {
+            akce = new HashSet<>();
+        }
+        return akce;
+    }
+
+    public void setAkce(Set<Akce> akce) {
+        if (akce != null) {
+            for (Akce a : akce) {
+                a.setMisto(this);
+            }
+        }
+        this.akce = akce;
     }
 }

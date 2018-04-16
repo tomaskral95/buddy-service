@@ -1,15 +1,14 @@
 package com.buddyservice
 
 import com.buddyservice.domain.Adresa
+import com.buddyservice.domain.Akce
+import com.buddyservice.domain.DruhAkce
 import com.buddyservice.domain.Pohlavi
 import com.buddyservice.domain.Student
 import com.buddyservice.repository.IStudentRepository
-import org.h2.tools.Server
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.test.context.ContextConfiguration
 import spock.lang.Specification
-
-import java.sql.SQLException
 
 @ContextConfiguration(locations = ["classpath:jdbc-connection-test-context.xml"])
 class PersistEntityIT extends Specification {
@@ -19,31 +18,58 @@ class PersistEntityIT extends Specification {
 
     def "Test connection to db through JpaRepository"() {
         given: "Preparing data for database persist test"
+            def adresa = new Adresa(
+                    stat: "Ceska Republika",
+                    mesto: "Praha",
+                    ulice: "Nad Sazavou",
+                    cisloPopisne: 11,
+            )
+            def adresa2 = new Adresa(
+                    stat: "Česká Republika",
+                    mesto: "Praha",
+                    ulice: "Za rohem",
+                    cisloPopisne: 22
+            )
+            def druhAkce = new DruhAkce(
+                    druh: "Volný čas"
+            )
+            def akce = [
+                    new Akce(
+                            druhAkce: druhAkce,
+                            nazev: "Fakultni koncert",
+                            datum: "1.1.2000",
+                            casOd: "18:00",
+                            casDo: "22:00",
+                            misto: adresa,
+                            popis: "Proste zabava",
+                            cena: 80,
+                            kapacita: 3
+                    ),
+                    new Akce(
+                            druhAkce: druhAkce,
+                            nazev: "Nejaka dalsi sranda",
+                            datum: "2.2.2000",
+                            casOd: "18:00",
+                            casDo: "22:00",
+                            misto: adresa,
+                            popis: "Proste zabava",
+                            cena: 80,
+                            kapacita: 10
+                    )
+            ]
             def student = new Student(
+                    rodneCislo: "9410110235",
                     xname: "krat08",
                     jmeno: "Tomáš",
                     prijmeni: "Král",
                     pohlavi: Pohlavi.MUZ,
                     statniPrislusnost: "CZ",
-                    adresy: [
-                            new Adresa(
-                                    stat: "Česká Republika",
-                                    mesto: "Praha",
-                                    ulice: "Za rohem",
-                                    cisloPopisne: 22
-                            ),
-                            new Adresa(
-                                    stat: "California",
-                                    mesto: "Los Angeles",
-                                    ulice: "Venice",
-                                    cisloPopisne: 33
-                            )
-                    ],
+                    adresa: adresa,
                     telefon: 731373927,
-                    email: "krat08@vse.cz"
+                    email: "krat08@vse.cz",
+                    akce: akce
             )
         when: "Persist and select from database"
-            startH2TcpServer()
             buddyRepository.save(student)
             def foundStudents = buddyRepository.findAll()
             def obtainedStudent = foundStudents.get(0)
@@ -60,26 +86,11 @@ class PersistEntityIT extends Specification {
             assert student.email == obtainedStudent.email
 
             // Comparing ADDRESS 1
-            assert student.adresy[0].stat == obtainedStudent.adresy[0].stat
-            assert student.adresy[0].mesto == obtainedStudent.adresy[0].mesto
-            assert student.adresy[0].ulice == obtainedStudent.adresy[0].ulice
-            assert student.adresy[0].cisloPopisne == obtainedStudent.adresy[0].cisloPopisne
+            assert student.adresa.stat == obtainedStudent.adresa.stat
+            assert student.adresa.mesto == obtainedStudent.adresa.mesto
+            assert student.adresa.ulice == obtainedStudent.adresa.ulice
+            assert student.adresa.cisloPopisne == obtainedStudent.adresa.cisloPopisne
 
-            // Comparing ADDRESS 2
-            assert student.adresy[1].stat == obtainedStudent.adresy[1].stat
-            assert student.adresy[1].mesto == obtainedStudent.adresy[1].mesto
-            assert student.adresy[1].ulice == obtainedStudent.adresy[1].ulice
-            assert student.adresy[1].cisloPopisne == obtainedStudent.adresy[1].cisloPopisne
-    }
-
-    def void startH2TcpServer() {
-        try {
-            Server server = Server.createTcpServer().start()
-            println "Server started and connection is open."
-            println "URL: jdbc:h2:" + server.getURL() + "/mem:test"
-        } catch (SQLException e) {
-            throw new IllegalStateException("Could not start H2 server", e)
-        }
     }
 
 }
