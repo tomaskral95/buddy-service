@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <AnchorPane fx:id="topBar" prefHeight="60.0" prefWidth="400.0" style="-fx-background-color: #3D4956;">
+            <children>
+                <ImageView fitHeight="51.0" fitWidth="62.0" layoutX="100.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@images/user-icon.png" />
+                    </image>
+                </ImageView>
+                <ImageView fitHeight="51.0" fitWidth="62.0" layoutX="239.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@images/password-icon.png" />
+                    </image>
+                </ImageView>
+            </children>
+        </AnchorPane>
+        <AnchorPane fx:id="prihlaseni" layoutY="70.0" prefHeight="430.0" prefWidth="400.0" style="-fx-background-color: #3D4956;" visible="false" />
+        <AnchorPane fx:id="registrace" layoutY="70.0" prefHeight="430.0" prefWidth="400.0" style="-fx-background-color: #3D4956;">
+            <children>
+                <Label layoutX="30.0" layoutY="49.0" text="XNAME" textFill="WHITE">
+                    <font>
+                        <Font name="System Bold" size="14.0" />
+                    </font>
+                </Label>
+                <Label layoutX="30.0" layoutY="73.0" prefHeight="36.0" prefWidth="188.0" text="Pokud nejste vlastníkem xname použijte rodné čislo" textFill="#d7d3d3" wrapText="true" />
+                <TextField layoutX="233.0" layoutY="45.0" prefHeight="27.0" prefWidth="137.0" promptText="XNAME" style="-fx-background-color: rgb(0,0,0,0); -fx-border-width: 0 0 1 0; -fx-border-color: #0984e3;" fx:id="xnameTextField" />
+                <TextField fx:id="hesloTextField" layoutX="233.0" layoutY="126.0" prefHeight="27.0" prefWidth="137.0" promptText="HESLO" style="-fx-background-color: rgb(0,0,0,0); -fx-border-width: 0 0 1 0; -fx-border-color: #0984e3;" />
+                <Label layoutX="30.0" layoutY="128.0" text="HESLO" textFill="WHITE">
+                    <font>
+                        <Font name="System Bold" size="14.0" />
+                    </font>
+                </Label>
+                <Label layoutX="30.0" layoutY="152.0" prefHeight="36.0" prefWidth="182.0" text="Pokud nemáte účet, přejděte k registraci" textFill="#d7d3d3" wrapText="true" />
+                <Button layoutX="31.0" layoutY="231.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="341.0" style="-fx-background-color: #0984e3; -fx-background-radius: 5em; -fx-border-radius: 5em;" text="Přihlásit" textFill="WHITE">
+                    <font>
+                        <Font name="System Bold" size="13.0" />
+                    </font>
+                </Button>
+                <Label layoutX="127.0" layoutY="302.0" prefHeight="99.0" prefWidth="243.0" text="Vítejte v systému pro zahraniční studenty. Tato aplkace by Vám měla pomoci najít svého buddyho, přihlašovat se na studentské akce a mnoho dalšího." textFill="#d7d3d3" wrapText="true" />
+                <ImageView fitHeight="87.0" fitWidth="84.0" layoutX="47.0" layoutY="306.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@images/questionMark-icon.png" />
+                    </image>
+                </ImageView>
+            </children>
+        </AnchorPane>
+    </children>
+</AnchorPane>
