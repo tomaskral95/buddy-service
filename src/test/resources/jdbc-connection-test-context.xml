@@ -11,6 +11,9 @@ http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
 
     <context:component-scan base-package="com.buddyservice.repository"/>
     <context:component-scan base-package="com.buddyservice.domain"/>
+    <context:component-scan base-package="com.buddyservice.service"/>
+    <context:component-scan base-package="com.buddyservice.gui.controller"/>
+    <context:component-scan base-package="com.buddyservice.auth"/>
     <jpa:repositories base-package="com.buddyservice.repository" />
 
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">

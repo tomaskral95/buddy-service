@@ -19,6 +19,10 @@ public class StudentService implements IStudentService{
     @Autowired
     private IAuthService authService;
 
+    public Student getStudent(String rodneCislo) {
+        return studentRepository.findStudentByRodneCislo(rodneCislo);
+    }
+
     public void saveStudent(Student student) {
         try {
             student.setHeslo(authService.createMD5Hash(student.getHeslo()));
@@ -42,6 +46,10 @@ public class StudentService implements IStudentService{
         }
 
         return foundStudent.getHeslo().equals(md5Pass) && foundStudent.getRodneCislo().equals(rodneCislo);
+    }
+
+    public Student findStudent(String rodneCislo) {
+        return studentRepository.findStudentByRodneCislo(rodneCislo);
     }
 
 }

@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.test.context.ContextConfiguration
 import spock.lang.Specification
 
-@ContextConfiguration(locations = ["classpath:service-test-context.xml"])
+@ContextConfiguration(locations = ["classpath:jdbc-connection-test-context.xml"])
 class HashTest extends Specification {
 
     @Autowired

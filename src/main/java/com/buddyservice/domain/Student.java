@@ -15,7 +15,7 @@ public class Student {
     private String jmeno;
     private String prijmeni;
     private String titul;
-    private Date datumNarozeni;
+    private String datumNarozeni;
     private Pohlavi pohlavi;
     private String statniPrislusnost;
     private Adresa adresa;
@@ -71,11 +71,11 @@ public class Student {
     }
 
     @Column(name = "DATUM_NAROZENI")
-    public Date getDatumNarozeni() {
+    public String getDatumNarozeni() {
         return datumNarozeni;
     }
 
-    public void setDatumNarozeni(Date datumNarozeni) {
+    public void setDatumNarozeni(String datumNarozeni) {
         this.datumNarozeni = datumNarozeni;
     }
 

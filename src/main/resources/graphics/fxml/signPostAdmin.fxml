@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane fx:id="rootPane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.buddyservice.gui.controller.SignPostAdminController">
+    <children>
+        <Label id="label" layoutX="23.0" layoutY="31.0" minHeight="16" minWidth="69" text="Přihlášen: " />
+      <Button id="odhlasitBtn" fx:id="logOutButton" layoutX="532.0" layoutY="14.0" onAction="#logOutButtonAction" prefHeight="19.0" prefWidth="154.0" text="Odhlásit" />
+      <Label id="xnameLabel" layoutX="82.0" layoutY="31.0" minHeight="16" minWidth="69" text="[edit xname]" fx:id="xnameLabel" />
+      <VBox layoutX="49.0" layoutY="131.0" prefHeight="325.0" prefWidth="603.0" spacing="5.0">
+         <children>
+              <Button fx:id="newStudentButton" onAction="#newStudentButtonAction" prefHeight="65.0" prefWidth="603.0" text="Vlož studenta" />
+            <Button fx:id="displayStudentsButton" onAction="#displayStudentsButtonAction" prefHeight="65.0" prefWidth="603.0" text="Zobraz studenty" />
+            <Button fx:id="addActionButton" onAction="#addActionButtonAction" prefHeight="65.0" prefWidth="603.0" text="Vlož akci" />
+            <Button fx:id="displayActionsButton" lineSpacing="2.0" onAction="#displayActionsButtonAction" prefHeight="65.0" prefWidth="603.0" text="Zobraz akce" />
+         </children>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </VBox>
+    </children>
+</AnchorPane>

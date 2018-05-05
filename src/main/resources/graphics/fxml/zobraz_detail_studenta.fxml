@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="zobrazakci.FXMLDocumentController">
+    <children>
+      <VBox layoutX="12.0" layoutY="13.0" prefHeight="807.0" prefWidth="368.0" spacing="5.0">
+         <children>
+            <Label text="Xname:" />
+            <Label text="Jméno:" />
+            <Label text="Příjmení:" />
+            <Label text="Titul:" />
+            <Label text="Datum narození:" />
+            <Label text="Pohlaví:" />
+            <Label text="Státní příslušnost:" />
+            <Label text="Telefon:" />
+            <Label text="Email:" />
+            <Label text="Stát:" />
+            <Label text="Město:" />
+            <Label text="Ulice:" />
+            <Label text="ČP:" />
+            <ImageView id="fotoImageView" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+         </children>
+      </VBox>
+      <VBox layoutX="373.0" layoutY="12.0" prefHeight="640.0" prefWidth="313.0" spacing="5.0">
+         <children>
+            <Label id="xnameLabel" text="[xname]" />
+            <Label id="jmenoLabel" text="[jmeno]" />
+            <Label id="prijmeniLabel" text="[prijmeni]" />
+            <Label id="titulLabel" text="[titul]" />
+            <Label id="datumNarizeniLabel" text="[datumNarozeni]" />
+            <Label id="pohlaviLabel" text="[pohlavi]" />
+            <Label id="statniPrislusnostLabel" text="[statniPrislusnost]" />
+            <Label id="telefonLabel" text="[telefon]" />
+            <Label id="mailLabel" text="[mail]" />
+            <Label id="statLabel" text="[stat]" />
+            <Label id="mestoLabel" text="[město]" />
+            <Label id="uliceLabel" text="[ulice]" />
+            <Label id="CPLabel" text="[CP]" />
+         </children>
+      </VBox>
+    </children>
+</AnchorPane>

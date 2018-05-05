@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vlozstudenta.FXMLDocumentController">
+    <children>
+        <Button id="ulozBtn" fx:id="button" layoutX="553.0" layoutY="393.0" onAction="#handleButtonAction" prefHeight="71.0" prefWidth="119.0" text="Ulož" />
+      <VBox layoutX="14.0" layoutY="20.0" prefHeight="900.0" prefWidth="500.0" spacing="10.0">
+         <children>
+            <TextField id="xnameTextField" promptText="Xname" />
+            <TextField id="jmenoTextField" promptText="Jméno" />
+            <TextField id="prijmeniTextField" promptText="Příjmení" />
+            <TextField id="titulTextField" promptText="Titul" />
+            <TextField id="datumNarozeniTextField" promptText="Datum narození" />
+            <TextField id="pohlaviTextField" promptText="Pohlaví" />
+            <TextField id="statniPrislusnostTextField" promptText="Státní příslušnost" />
+            <TextField id="telefonTextField" promptText="Telefon" />
+            <TextField id="mailTextField" promptText="Email" />
+            <TextField id="statTextField" promptText="Stát" />
+            <TextField id="mestoTextField" promptText="Město" />
+            <TextField id="uliceTextField" promptText="Ulice" />
+            <TextField id="CPTextField" promptText="ČP" />
+         </children>
+      </VBox>
+    </children>
+</AnchorPane>

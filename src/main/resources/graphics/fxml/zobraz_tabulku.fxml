@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vlozakci.FXMLDocumentController">
+    <children>
+        <Label fx:id="label" layoutX="126" layoutY="120" minHeight="16" minWidth="69" />
+      <TableView id="tabulkaAkcI" layoutX="23.0" layoutY="65.0" prefHeight="629.0" prefWidth="954.0">
+        <columns>
+          <TableColumn prefWidth="75.0" text="C1" />
+          <TableColumn prefWidth="75.0" text="C2" />
+        </columns>
+      </TableView>
+      <HBox layoutX="-4.0" prefHeight="77.0" prefWidth="1000.0" spacing="215.0">
+         <children>
+            <Button id="druhAkceBtn" mnemonicParsing="false" prefHeight="65.0" prefWidth="198.0" text="Druh akce" />
+            <Button id="terminBtn" mnemonicParsing="false" text="Termín" />
+            <Button id="volnaKapacitaBtn" mnemonicParsing="false" text="Volná kapacita" />
+         </children>
+      </HBox>
+    </children>
+</AnchorPane>

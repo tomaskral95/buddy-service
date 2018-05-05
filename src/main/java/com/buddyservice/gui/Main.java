@@ -1,5 +1,7 @@
 package com.buddyservice.gui;
 
+import com.buddyservice.domain.Student;
+import com.buddyservice.gui.cache.CacheManager;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -10,7 +12,9 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class Main extends Application {
 
-    ApplicationContext applicationContext = new ClassPathXmlApplicationContext("jdbc-connection-context.xml");
+    private ApplicationContext applicationContext = new ClassPathXmlApplicationContext("jdbc-connection-context.xml");
+    private static Student loggedStudent;
+    private static CacheManager<String> cacheManager;
 
     @Override
     public void start(Stage stage) throws Exception {
@@ -29,4 +33,26 @@ public class Main extends Application {
         launch(args);
     }
 
+    public static Student getLoggedStudent() {
+        return loggedStudent;
+    }
+
+    public static void setLoggedStudent(Student loggedStudent) {
+        Main.loggedStudent = loggedStudent;
+    }
+
+    public ApplicationContext getApplicationContext() {
+        return applicationContext;
+    }
+
+    public void setApplicationContext(ApplicationContext applicationContext) {
+        this.applicationContext = applicationContext;
+    }
+
+    public static CacheManager<String> getCacheManager() {
+        if (cacheManager == null) {
+            cacheManager = new CacheManager<>();
+        }
+        return cacheManager;
+    }
 }
