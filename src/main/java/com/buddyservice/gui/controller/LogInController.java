@@ -29,6 +29,9 @@ public class LogInController extends SwitchableController {
 
     @FXML
     private void prihlasitBtnHandle(ActionEvent event) {
+        if (studentService == null) {
+            studentService = (IStudentService) Main.applicationContext.getBean("studentService");
+        }
         String rodneCislo = rodneCisloTextField.getText();
         String heslo = hesloPasswordField.getText();
         boolean isRegisteredUser = studentService.authenticateStudent(rodneCislo, heslo);
@@ -36,7 +39,11 @@ public class LogInController extends SwitchableController {
             Student loggedStudent = studentService.findStudent(rodneCislo);
             Main.getCacheManager().addValue("xname", loggedStudent.getXname());
             Main.setLoggedStudent(loggedStudent);
-            proceedToNextPage("graphics/fxml/signPostAdmin.fxml", rootPane);
+            if (loggedStudent.isAdmin()) {
+                proceedToNextPage("graphics/fxml/signPostAdmin.fxml", rootPane);
+            } else {
+                // TODO NON ADMIN SIGNPOST
+            }
         } else {
             Alert alert = new Alert(Alert.AlertType.ERROR, "Nesprávné přihlašovací údaje");
             alert.show();

@@ -10,7 +10,6 @@ import java.util.Optional;
 @Repository
 public interface IAkceRepository extends JpaRepository<Akce, Long> {
 
-    @Override
-    Optional<Akce> findById(Long aLong);
+    Akce findAkceByIdAkce(Long id);
 
 }

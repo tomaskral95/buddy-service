@@ -72,7 +72,9 @@ class PersistEntityIT extends Specification {
                     telefon: 731373927,
                     email: "krat08@vse.cz",
                     akce: akce,
-                    heslo: "heslo"
+                    heslo: "heslo",
+                    datumNarozeni: "19951212",
+                    admin: true
             )
         when: "Persist and select from database"
             studentService.saveStudent(student)

@@ -1,7 +1,7 @@
 package com.buddyservice.gui;
 
+import com.buddyservice.cache.CacheManager;
 import com.buddyservice.domain.Student;
-import com.buddyservice.gui.cache.CacheManager;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -12,14 +12,14 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class Main extends Application {
 
-    private ApplicationContext applicationContext = new ClassPathXmlApplicationContext("jdbc-connection-context.xml");
+    public static ApplicationContext applicationContext = new ClassPathXmlApplicationContext("jdbc-connection-context.xml");
     private static Student loggedStudent;
     private static CacheManager<String> cacheManager;
 
     @Override
     public void start(Stage stage) throws Exception {
         FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("graphics/fxml/logIn.fxml"));
-        loader.setControllerFactory(applicationContext::getBean);
+        loader.setControllerFactory(clazz -> applicationContext.getBean(clazz));
         Parent root = loader.load();
 
         Scene scene = new Scene(root);

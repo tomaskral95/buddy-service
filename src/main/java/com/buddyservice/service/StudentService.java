@@ -9,7 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.security.NoSuchAlgorithmException;
 
-@Service
+@Service("studentService")
 @Transactional
 public class StudentService implements IStudentService{
 

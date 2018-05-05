@@ -1,4 +1,4 @@
-package com.buddyservice.gui.cache;
+package com.buddyservice.cache;
 
 import java.util.HashMap;
 import java.util.Map;

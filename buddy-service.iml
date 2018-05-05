@@ -5,7 +5,7 @@
       <configuration />
     </facet>
   </component>
-  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_8">
+  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_9">
     <output url="file://$MODULE_DIR$/target/classes" />
     <output-test url="file://$MODULE_DIR$/target/test-classes" />
     <content url="file://$MODULE_DIR$">
@@ -46,8 +46,12 @@
     <orderEntry type="library" name="Maven: org.springframework:spring-beans:5.0.4.RELEASE" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.springframework:spring-test:5.0.4.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: mysql:mysql-connector-java:6.0.6" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: com.h2database:h2:1.4.197" level="project" />
+    <orderEntry type="library" name="Maven: javax.xml.bind:jaxb-api:2.2.11" level="project" />
+    <orderEntry type="library" name="Maven: com.sun.xml.bind:jaxb-core:2.2.11" level="project" />
+    <orderEntry type="library" name="Maven: com.sun.xml.bind:jaxb-impl:2.2.11" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.codehaus.groovy:groovy-all:2.4.4" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.codehaus.groovy:groovy:2.4.15" level="project" />
+    <orderEntry type="library" name="Maven: org.codehaus.groovy:groovy:2.4.15" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.spockframework:spock-spring:1.1-groovy-2.4" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.spockframework:spock-core:1.1-groovy-2.4" level="project" />
   </component>

@@ -23,6 +23,7 @@ public class Student {
     private String email;
     private boolean zahranicni;
     private Set<Akce> akce;
+    private boolean admin;
 
     @Id
     @Column(name = "ROCNE_CISLO")
@@ -181,5 +182,14 @@ public class Student {
 
     public void setHeslo(String heslo) {
         this.heslo = heslo;
+    }
+
+    @Column(name = "IS_ADMIN")
+    public boolean isAdmin() {
+        return admin;
+    }
+
+    public void setAdmin(boolean admin) {
+        this.admin = admin;
     }
 }

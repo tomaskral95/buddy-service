@@ -6,7 +6,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-@Service
+@Service("authService")
 @Transactional
 public class AuthService implements IAuthService {
 

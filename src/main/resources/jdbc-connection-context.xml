@@ -17,6 +17,7 @@ http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
     <jpa:repositories base-package="com.buddyservice.repository" />
 
     <!--<import resource="service-context.xml"/>-->
+    <!--<import resource="controller-context.xml"/>-->
 
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="${jdbc.driver}"/>

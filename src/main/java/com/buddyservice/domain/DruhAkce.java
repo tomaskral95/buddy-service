@@ -31,7 +31,7 @@ public class DruhAkce {
         this.druh = druh;
     }
 
-    @OneToMany(mappedBy = "druhAkce", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "druhAkce", fetch = FetchType.EAGER)
     public Set<Akce> getAkce() {
         if (akce == null) {
             akce = new HashSet<>();

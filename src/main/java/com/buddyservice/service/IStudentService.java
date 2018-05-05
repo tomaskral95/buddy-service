@@ -6,5 +6,4 @@ public interface IStudentService {
     void saveStudent(Student student);
     boolean authenticateStudent(String rodneCislo, String heslo);
     Student findStudent(String rodneCislo);
-
 }

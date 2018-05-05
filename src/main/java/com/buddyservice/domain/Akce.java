@@ -30,7 +30,7 @@ public class Akce {
         this.idAkce = idAkce;
     }
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
     @JoinColumn(name = "ID_DRUH")
     public DruhAkce getDruhAkce() {
         return druhAkce;

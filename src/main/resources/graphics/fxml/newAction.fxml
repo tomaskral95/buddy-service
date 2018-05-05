@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane fx:id="rootPane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.buddyservice.gui.controller.NewActionController">
+    <children>
+        <Button id="ulozBtn" fx:id="backButton" layoutX="553.0" layoutY="393.0" onAction="#backButtonAction" prefHeight="71.0" prefWidth="119.0" text="Zpět" />
+        <Button id="ulozBtn" fx:id="saveButton" layoutX="553.0" layoutY="311.0" onAction="#saveButtonAction" prefHeight="71.0" prefWidth="119.0" text="Ulož" />
+        <VBox layoutX="14.0" layoutY="50.0" prefHeight="486.0" prefWidth="500.0" spacing="10.0">
+            <children>
+                <TextField fx:id="datumTextField" promptText="Datum" />
+                <TextField fx:id="casOdTextField" promptText="Čas od" />
+                <TextField fx:id="casDoTextField" promptText="Čas do" />
+                <TextField fx:id="statTextField" promptText="Stát" />
+                <TextField fx:id="mestoTextField" promptText="Město" />
+                <TextField fx:id="uliceTextField" promptText="Ulice" />
+                <TextField fx:id="cisloPopisneTextField" promptText="ČP" />
+                <TextField fx:id="popisTextField" promptText="Popis" />
+                <TextField fx:id="cenaTextField" promptText="Cena" />
+                <TextField fx:id="maxPocetTextField" promptText="Maximální počet účastníků" />
+                <ComboBox fx:id="druhAkceComboBox" prefHeight="27.0" prefWidth="500.0" promptText="Druh akce" />
+            </children>
+        </VBox>
+    </children>
+</AnchorPane>
