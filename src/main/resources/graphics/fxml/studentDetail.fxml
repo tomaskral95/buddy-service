@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane fx:id="rootPane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="573.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.buddyservice.gui.controller.StudentDetailController">
+    <children>
+      <VBox layoutX="27.0" layoutY="183.0" prefHeight="436.0" prefWidth="330.0" spacing="5.0">
+         <children>
+            <Label text="Xname:" />
+            <Label text="Jméno:" />
+            <Label text="Příjmení:" />
+            <Label text="Titul:" />
+            <Label text="Datum narození:" />
+            <Label text="Pohlaví:" />
+            <Label text="Státní příslušnost:" />
+            <Label text="Telefon:" />
+            <Label text="Email:" />
+            <Label text="Stát:" />
+            <Label text="Město:" />
+            <Label text="Ulice:" />
+            <Label text="ČP:" />
+         </children>
+      </VBox>
+      <VBox layoutX="373.0" layoutY="183.0" prefHeight="413.0" prefWidth="313.0" spacing="5.0">
+         <children>
+            <Label text="[xname]" fx:id="xnameLabel" />
+            <Label fx:id="jmenoLabel" text="[jmeno]" />
+            <Label fx:id="prijmeniLabel" text="[prijmeni]" />
+            <Label fx:id="titulLabel" text="[titul]" />
+            <Label fx:id="datumNarizeniLabel" text="[datumNarozeni]" />
+            <Label fx:id="pohlaviLabel" text="[pohlavi]" />
+            <Label fx:id="statniPrislusnostLabel" text="[statniPrislusnost]" />
+            <Label fx:id="telefonLabel" text="[telefon]" />
+            <Label fx:id="mailLabel" text="[mail]" />
+            <Label fx:id="statLabel" text="[stat]" />
+            <Label fx:id="mestoLabel" text="[město]" />
+            <Label fx:id="uliceLabel" text="[ulice]" />
+            <Label fx:id="cisloPopisneLabel" text="[CP]" />
+         </children>
+      </VBox>
+      <TextField fx:id="rodneCisloTextField" layoutX="27.0" layoutY="141.0" prefHeight="25.0" prefWidth="221.0" promptText="Rodné číslo" />
+      <Button fx:id="findButton" layoutX="259.0" layoutY="141.0" mnemonicParsing="false" onAction="#findButtonAction" prefHeight="25.0" prefWidth="79.0" text="Vyhledat" />
+      <Label fx:id="findStatusLabel" layoutX="373.0" layoutY="141.0" prefHeight="26.0" prefWidth="183.0" text="Úspěšně vyhledáno">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <ComboBox fx:id="studentListComboBox" layoutX="373.0" layoutY="24.0" prefHeight="25.0" prefWidth="247.0" promptText="Seznam studentů" />
+      <ImageView id="fotoImageView" fx:id="photoImageView" fitHeight="100.0" fitWidth="104.0" layoutX="27.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true" />
+      <Button fx:id="backButton" layoutX="27.0" layoutY="21.0" mnemonicParsing="false" onAction="#backButtonAction" prefHeight="32.0" prefWidth="79.0" text="Zpět" />
+    </children>
+</AnchorPane>

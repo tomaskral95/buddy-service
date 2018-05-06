@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.security.NoSuchAlgorithmException;
+import java.util.List;
 
 @Service("studentService")
 @Transactional
@@ -50,6 +51,11 @@ public class StudentService implements IStudentService{
 
     public Student findStudent(String rodneCislo) {
         return studentRepository.findStudentByRodneCislo(rodneCislo);
+    }
+
+    @Override
+    public List<Student> findAllStudents() {
+        return studentRepository.findAll();
     }
 
 }

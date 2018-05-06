@@ -42,7 +42,7 @@ public class SignPostAdminController
 
     @FXML
     public void displayStudentsButtonAction(ActionEvent event) {
-        proceedToNextPage("graphics/fxml/table.fxml", rootPane);
+        proceedToNextPage("graphics/fxml/studentDetail.fxml", rootPane);
     }
 
     @FXML
@@ -52,7 +52,7 @@ public class SignPostAdminController
 
     @FXML
     public void displayActionsButtonAction(ActionEvent event) {
-        proceedToNextPage("graphics/fxml/table.fxml", rootPane);
+        proceedToNextPage("graphics/fxml/actionDetail.fxml", rootPane);
     }
 
 }

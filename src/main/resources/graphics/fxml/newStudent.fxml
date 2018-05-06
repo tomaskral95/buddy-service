@@ -7,28 +7,32 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane fx:id="rootPane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="601.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.buddyservice.gui.controller.NewStudentController">
+<AnchorPane fx:id="rootPane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="601.0" prefWidth="700.0"
+            xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.buddyservice.gui.controller.NewStudentController">
     <children>
-        <Button fx:id="saveButton" layoutX="553.0" layoutY="393.0" onAction="#saveButtonAction" prefHeight="71.0" prefWidth="119.0" text="Ulož" />
-        <Button fx:id="backButton" layoutX="553.0" layoutY="501.0" onAction="#backButtonAction" prefHeight="71.0" prefWidth="119.0" text="Zpět" />
+        <Button fx:id="saveButton" layoutX="553.0" layoutY="393.0" onAction="#saveButtonAction" prefHeight="71.0"
+                prefWidth="119.0" text="Ulož"/>
+        <Button fx:id="backButton" layoutX="553.0" layoutY="501.0" onAction="#backButtonAction" prefHeight="71.0"
+                prefWidth="119.0" text="Zpět"/>
         <VBox layoutX="14.0" layoutY="20.0" prefHeight="900.0" prefWidth="500.0" spacing="10.0">
             <children>
-                <TextField promptText="Xname (pouze pokud jsi český/á student/ka" fx:id="xnameTextField" />
-                <TextField fx:id="rodneCisloTextField" promptText="Rodné číslo" />
-                <PasswordField fx:id="hesloPasswordField" promptText="Heslo" />
-                <TextField fx:id="jmenoTextField" promptText="Jméno" />
-                <TextField fx:id="prijmeniTextField" promptText="Příjmení" />
-                <TextField fx:id="titulTextField" promptText="Titul" />
-                <TextField fx:id="datumNarozeniTextField" promptText="Datum narození" />
-                <TextField fx:id="pohlaviTextField" promptText="Pohlaví" />
-                <TextField fx:id="statniPrislusnostTextField" promptText="Státní příslušnost" />
-                <TextField fx:id="telefonTextField" promptText="Telefon" />
-                <TextField fx:id="emailTextField" promptText="Email" />
-                <TextField fx:id="zahranicniTextField" promptText="Je zahraniční student" />
-                <TextField fx:id="statTextField" promptText="Stát" />
-                <TextField fx:id="mestoTextField" promptText="Město" />
-                <TextField fx:id="uliceTextField" promptText="Ulice" />
-                <TextField fx:id="cisloPopisneTextField" promptText="ČP" />
+                <TextField promptText="Xname (pouze pokud jsi český/á student/ka" fx:id="xnameTextField"/>
+                <TextField fx:id="rodneCisloTextField" promptText="Rodné číslo"/>
+                <PasswordField fx:id="hesloPasswordField" promptText="Heslo"/>
+                <TextField fx:id="jmenoTextField" promptText="Jméno"/>
+                <TextField fx:id="prijmeniTextField" promptText="Příjmení"/>
+                <TextField fx:id="titulTextField" promptText="Titul"/>
+                <TextField fx:id="datumNarozeniTextField" promptText="Datum narození"/>
+                <TextField fx:id="pohlaviTextField" promptText="Pohlaví"/>
+                <TextField fx:id="statniPrislusnostTextField" promptText="Státní příslušnost"/>
+                <TextField fx:id="telefonTextField" promptText="Telefon"/>
+                <TextField fx:id="emailTextField" promptText="Email"/>
+                <TextField fx:id="zahranicniTextField" promptText="Je zahraniční student"/>
+                <TextField fx:id="statTextField" promptText="Stát"/>
+                <TextField fx:id="mestoTextField" promptText="Město"/>
+                <TextField fx:id="uliceTextField" promptText="Ulice"/>
+                <TextField fx:id="cisloPopisneTextField" promptText="ČP"/>
             </children>
         </VBox>
     </children>
