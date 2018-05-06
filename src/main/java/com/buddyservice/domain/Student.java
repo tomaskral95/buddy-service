@@ -141,7 +141,7 @@ public class Student {
         this.zahranicni = zahranicni;
     }
 
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "STUDENT_AKCE",
             joinColumns = {@JoinColumn(name = "RODNE_CISLO")},

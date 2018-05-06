@@ -55,4 +55,7 @@ public class SignPostAdminController
         proceedToNextPage("graphics/fxml/actionDetail.fxml", rootPane);
     }
 
+    public void editStudentButtonAction(ActionEvent event) {
+        proceedToNextPage("graphics/fxml/editStudent.fxml", rootPane);
+    }
 }

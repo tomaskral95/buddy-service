@@ -1,6 +1,7 @@
 package com.buddyservice.service;
 
 import com.buddyservice.domain.Student;
+import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane fx:id="rootPane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="601.0" prefWidth="784.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.buddyservice.gui.controller.EditStudentController">
+    <children>
+        <Button fx:id="upravitButton" layoutX="540.0" layoutY="413.0" onAction="#upravitButtonAction" prefHeight="71.0" prefWidth="230.0" text="Upravit" />
+        <Button fx:id="backButton" layoutX="540.0" layoutY="498.0" onAction="#backButtonAction" prefHeight="71.0" prefWidth="230.0" text="Zpět" />
+        <VBox layoutX="14.0" layoutY="20.0" prefHeight="900.0" prefWidth="500.0" spacing="10.0">
+            <children>
+                <TextField promptText="Xname (pouze pokud jsi český/á student/ka" fx:id="xnameTextField" />
+                <TextField fx:id="rodneCisloTextField" promptText="Rodné číslo" />
+                <TextField fx:id="jmenoTextField" promptText="Jméno" />
+                <TextField fx:id="prijmeniTextField" promptText="Příjmení" />
+                <TextField fx:id="titulTextField" promptText="Titul" />
+                <TextField fx:id="datumNarozeniTextField" promptText="Datum narození" />
+                <TextField fx:id="pohlaviTextField" promptText="Pohlaví" />
+                <TextField fx:id="statniPrislusnostTextField" promptText="Státní příslušnost" />
+                <TextField fx:id="telefonTextField" promptText="Telefon" />
+                <TextField fx:id="emailTextField" promptText="Email" />
+                <TextField fx:id="zahranicniTextField" promptText="Je zahraniční student" />
+                <TextField fx:id="statTextField" promptText="Stát" />
+                <TextField fx:id="mestoTextField" promptText="Město" />
+                <TextField fx:id="uliceTextField" promptText="Ulice" />
+                <TextField fx:id="cisloPopisneTextField" promptText="ČP" />
+            </children>
+        </VBox>
+      <ComboBox fx:id="studentiComboBox" layoutX="540.0" layoutY="20.0" prefHeight="25.0" prefWidth="230.0" promptText="Všichni studenti" />
+      <Button fx:id="vyhledatButton" layoutX="540.0" layoutY="57.0" mnemonicParsing="false" onAction="#vyhledatButtonAction" prefHeight="25.0" prefWidth="230.0" text="Vyhledat" />
+    </children>
+</AnchorPane>

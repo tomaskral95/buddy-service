@@ -72,7 +72,7 @@ public class Adresa {
         this.student = student;
     }
 
-    @OneToMany(mappedBy = "misto", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "misto")
     public Set<Akce> getAkce() {
         if (akce == null) {
             akce = new HashSet<>();

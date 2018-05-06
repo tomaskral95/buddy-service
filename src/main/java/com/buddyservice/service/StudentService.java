@@ -12,7 +12,7 @@ import java.util.List;
 
 @Service("studentService")
 @Transactional
-public class StudentService implements IStudentService{
+public class StudentService implements IStudentService {
 
     @Autowired
     private IStudentRepository studentRepository;
@@ -26,7 +26,9 @@ public class StudentService implements IStudentService{
 
     public void saveStudent(Student student) {
         try {
-            student.setHeslo(authService.createMD5Hash(student.getHeslo()));
+            if (student.getHeslo() != null) {
+                student.setHeslo(authService.createMD5Hash(student.getHeslo()));
+            }
         } catch (NoSuchAlgorithmException e) {
             System.out.println("Zvoleno nesprávné kódování");
         }

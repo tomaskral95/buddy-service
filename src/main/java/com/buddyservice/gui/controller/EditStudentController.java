@@ -1,6 +1,5 @@
 package com.buddyservice.gui.controller;
 
-import com.buddyservice.auth.IAuthService;
 import com.buddyservice.domain.Adresa;
 import com.buddyservice.domain.Pohlavi;
 import com.buddyservice.domain.Student;
@@ -8,21 +7,28 @@ import com.buddyservice.gui.Main;
 import com.buddyservice.service.IStudentService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
-import javafx.scene.control.PasswordField;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Controller;
 
-import java.security.NoSuchAlgorithmException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.ResourceBundle;
 
 @Controller
-public class NewStudentController extends SwitchableController {
+public class EditStudentController
+        extends SwitchableController
+        implements Initializable {
 
     private ApplicationContext applicationContext = Main.applicationContext;
+
+    @FXML
+    public ComboBox studentiComboBox;
 
     @FXML
     public AnchorPane rootPane;
@@ -73,11 +79,7 @@ public class NewStudentController extends SwitchableController {
     public TextField rodneCisloTextField;
 
     @FXML
-    public PasswordField hesloPasswordField;
-
-    @FXML
-    public void saveButtonAction(ActionEvent event) {
-        IAuthService authService = (IAuthService) applicationContext.getBean("authService");
+    public void upravitButtonAction(ActionEvent event) {
         IStudentService studentService = (IStudentService) applicationContext.getBean("studentService");
         List<String> alerts = new ArrayList<>();
         Student student = new Student();
@@ -167,19 +169,9 @@ public class NewStudentController extends SwitchableController {
 
         student.setAdresa(adresa);
 
-        try {
-            if (!hesloPasswordField.getText().equals("")) {
-                student.setHeslo(authService.createMD5Hash(hesloPasswordField.getText()));
-            } else {
-                alerts.add("Heslo");
-            }
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        }
-
         if (alerts.size() == 0) {
             studentService.saveStudent(student);
-            Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Student byl úspěšně uložen!");
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Student byl úspěšně upraven!");
             alert.showAndWait();
         } else {
             String alertString = "Musíte vyplnit pole:\n";
@@ -195,7 +187,52 @@ public class NewStudentController extends SwitchableController {
         }
     }
 
+    @FXML
     public void backButtonAction(ActionEvent event) {
         proceedToNextPage("graphics/fxml/signPostAdmin.fxml", rootPane);
+    }
+
+    @FXML
+    public void vyhledatButtonAction(ActionEvent event) {
+        IStudentService studentService = (IStudentService) applicationContext.getBean("studentService");
+        String rodneCislo = studentiComboBox.getValue().toString().split("-")[1].trim();
+        Student foundStudent = studentService.findStudent(rodneCislo);
+        if (foundStudent == null) {
+            Alert alert = new Alert(Alert.AlertType.ERROR, "Musíš vybrat studenta k vyhledání!");
+            alert.showAndWait();
+        } else {
+            xnameTextField.setText(foundStudent.getXname());
+            rodneCisloTextField.setText(foundStudent.getRodneCislo());
+            jmenoTextField.setText(foundStudent.getJmeno());
+            prijmeniTextField.setText(foundStudent.getPrijmeni());
+            titulTextField.setText(foundStudent.getTitul());
+            datumNarozeniTextField.setText(foundStudent.getDatumNarozeni());
+            pohlaviTextField.setText(foundStudent.getPohlavi().toString());
+            statniPrislusnostTextField.setText(foundStudent.getStatniPrislusnost());
+            telefonTextField.setText(foundStudent.getTelefon());
+            emailTextField.setText(foundStudent.getEmail());
+            zahranicniTextField.setText(String.valueOf(foundStudent.isZahranicni()));
+            statTextField.setText(foundStudent.getAdresa().getStat());
+            mestoTextField.setText(foundStudent.getAdresa().getMesto());
+            uliceTextField.setText(foundStudent.getAdresa().getUlice());
+            cisloPopisneTextField.setText(String.valueOf(foundStudent.getAdresa().getCisloPopisne()));
+        }
+
+
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        IStudentService studentService = (IStudentService) applicationContext.getBean("studentService");
+
+        List<Student> students = studentService.findAllStudents();
+        List<String> comboInformations = new ArrayList<>();
+        for (Student student : students) {
+            if (student.getRodneCislo() != null && student.getJmeno() != null && student.getPrijmeni() != null) {
+                comboInformations.add(student.getJmeno() + " " + student.getPrijmeni() + " - " + student.getRodneCislo());
+            }
+        }
+        studentiComboBox.getItems().addAll(comboInformations);
+        comboInformations.clear();
     }
 }

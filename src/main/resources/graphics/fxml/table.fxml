@@ -1,27 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
 <?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="rootPane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vlozakci.FXMLDocumentController">
+<AnchorPane fx:id="rootPane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="736.0" prefWidth="807.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vlozakci.FXMLDocumentController">
     <children>
         <Label fx:id="label" layoutX="126" layoutY="120" minHeight="16" minWidth="69" />
-      <TableView id="tabulkaAkcI" layoutX="23.0" layoutY="65.0" prefHeight="629.0" prefWidth="954.0">
+      <TableView id="tabulkaAkce" layoutX="23.0" layoutY="65.0" prefHeight="629.0" prefWidth="357.0">
         <columns>
           <TableColumn prefWidth="75.0" text="C1" />
           <TableColumn prefWidth="75.0" text="C2" />
         </columns>
       </TableView>
-      <HBox layoutX="-4.0" prefHeight="77.0" prefWidth="1000.0" spacing="215.0">
+      <HBox layoutX="23.0" layoutY="9.0" prefHeight="42.0" prefWidth="753.0" spacing="215.0">
          <children>
-            <Button id="druhAkceBtn" mnemonicParsing="false" prefHeight="65.0" prefWidth="198.0" text="Druh akce" />
-            <Button id="terminBtn" mnemonicParsing="false" text="Termín" />
-            <Button id="volnaKapacitaBtn" mnemonicParsing="false" text="Volná kapacita" />
+            <Button id="druhAkceBtn" fx:id="backButton" mnemonicParsing="false" onAction="#backButtonAction" prefHeight="43.0" prefWidth="126.0" text="Zpět" />
+            <Button id="terminBtn" fx:id="registrovaniStudentiButton" mnemonicParsing="false" onAction="#registrovaniStudentiButtonAction" prefHeight="25.0" prefWidth="151.0" text="Zaregistrovaní studenti" />
          </children>
       </HBox>
+      <TableView fx:id="tabulkaStudenti" layoutX="419.0" layoutY="65.0" prefHeight="629.0" prefWidth="357.0">
+         <columns>
+            <TableColumn prefWidth="75.0" text="C1" />
+            <TableColumn prefWidth="75.0" text="C2" />
+         </columns>
+      </TableView>
     </children>
 </AnchorPane>

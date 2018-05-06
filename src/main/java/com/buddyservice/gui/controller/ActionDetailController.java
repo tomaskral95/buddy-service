@@ -14,7 +14,12 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import org.springframework.context.ApplicationContext;
+import org.springframework.orm.jpa.JpaTransactionManager;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Query;
+import javax.transaction.TransactionManager;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -25,6 +30,9 @@ public class ActionDetailController
         implements Initializable {
 
     private ApplicationContext applicationContext = Main.applicationContext;
+
+    @FXML
+    public ComboBox studentiComboBox;
 
     @FXML
     public AnchorPane rootPane;
@@ -111,8 +119,19 @@ public class ActionDetailController
                 comboInformations.add(a.getNazev() + " - " + a.getIdAkce());
             }
         }
-
         akceComboBox.getItems().addAll(comboInformations);
+
+        IStudentService studentService = (IStudentService) applicationContext.getBean("studentService");
+
+        findStatusLabel.setText("");
+        List<Student> students = studentService.findAllStudents();
+        comboInformations.clear();
+        for (Student student : students) {
+            if (student.getRodneCislo() != null && student.getJmeno() != null && student.getPrijmeni() != null) {
+                comboInformations.add(student.getJmeno() + " " + student.getPrijmeni() + " - " + student.getRodneCislo());
+            }
+        }
+        studentiComboBox.getItems().addAll(comboInformations);
     }
 
     private void clearAllLabels() {
@@ -124,5 +143,27 @@ public class ActionDetailController
         popisLabel.setText("");
         cenaLabel.setText("");
         maxUcastLabel.setText("");
+    }
+
+    @FXML
+    public void zapisButtonAction(ActionEvent event) {
+        if (nazevLabel.getText().equals("")) {
+            Alert alert = new Alert(Alert.AlertType.ERROR, "Musíš první vyhledat akci, na kterou chceš studenta zapsat!");
+            alert.showAndWait();
+        } else {
+            IStudentService studentService = (IStudentService) applicationContext.getBean("studentService");
+            IAkceService akceService = (IAkceService) applicationContext.getBean("akceService");
+            EntityManagerFactory entityManagerFactory = (EntityManagerFactory) applicationContext.getBean("entityManagerFactory");
+
+            Akce akceToRegister = akceService.findAkceById(Long.valueOf(idAkceTextField.getText()));
+            String rodneCislo = studentiComboBox.getValue().toString().split("-")[1].trim();
+            Student studentToAdd = studentService.findStudent(rodneCislo);
+            studentToAdd.getAkce().add(akceToRegister);
+
+            studentService.saveStudent(studentToAdd);
+
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Student byl úspěšně zapsán!");
+            alert.showAndWait();
+        }
     }
 }
