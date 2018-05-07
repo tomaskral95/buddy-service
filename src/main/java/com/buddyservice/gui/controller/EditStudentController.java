@@ -82,45 +82,53 @@ public class EditStudentController
     public void upravitButtonAction(ActionEvent event) {
         IStudentService studentService = (IStudentService) applicationContext.getBean("studentService");
         List<String> alerts = new ArrayList<>();
-        Student student = new Student();
 
-        if (!jmenoTextField.getText().equals("")) {
+        Student student = new Student();
+        if (!jmenoTextField.getText().equals("") && InputChecker.checkStringWithoutNumbers(jmenoTextField.getText())) {
             student.setJmeno(jmenoTextField.getText());
         } else {
-            alerts.add("Jméno");
+            alerts.add("Jméno není vyplněno, nebo je ve špatném formátu");
         }
-        if (!prijmeniTextField.getText().equals("")) {
+        if (!prijmeniTextField.getText().equals("") && InputChecker.checkStringWithoutNumbers(prijmeniTextField.getText())) {
             student.setPrijmeni(prijmeniTextField.getText());
         } else {
-            alerts.add("Příjmení");
+            alerts.add("Příjmení není vyplněno, nebo je ve špatném formátu");
         }
-        if (!rodneCisloTextField.getText().equals("")) {
+        if (!rodneCisloTextField.getText().equals("") && InputChecker.checkRodneCislo(rodneCisloTextField.getText())) {
             student.setRodneCislo(rodneCisloTextField.getText());
         } else {
-            alerts.add("Rodné číslo");
+            alerts.add("Rodné číslo není vyplněno, nebo je ve špatném formátu");
         }
         student.setTitul(titulTextField.getText());
-        if (!datumNarozeniTextField.getText().equals("")) {
+        if (!datumNarozeniTextField.getText().equals("") && InputChecker.checkDate(datumNarozeniTextField.getText())) {
             student.setDatumNarozeni(datumNarozeniTextField.getText());
         } else {
-            alerts.add("Datum narození");
+            alerts.add("Datum narození není vyplněno, nebo je ve špatném formátu");
         }
-        if (!pohlaviTextField.getText().equals("")) {
+        if (!pohlaviTextField.getText().equals("") && InputChecker.checkStringWithoutNumbers(pohlaviTextField.getText())) {
             student.setPohlavi(Pohlavi.getPohlavi(pohlaviTextField.getText()));
         } else {
-            alerts.add("Pohlaví");
+            alerts.add("Pohlaví není vyplněno, nebo je ve špatném formátu");
         }
-        if (!statniPrislusnostTextField.getText().equals("")) {
+        if (!statniPrislusnostTextField.getText().equals("") && InputChecker.checkStringWithoutNumbers(statniPrislusnostTextField.getText())) {
             student.setStatniPrislusnost(statniPrislusnostTextField.getText());
         } else {
-            alerts.add("Státní příslušnost");
+            alerts.add("Státní příslušnost není vyplněna, nebo je ve špatném formátu");
         }
-        if (!emailTextField.getText().equals("")) {
+        if (!emailTextField.getText().equals("") && InputChecker.checkEmail(emailTextField.getText())) {
             student.setEmail(emailTextField.getText());
         } else {
-            alerts.add("Emailová adresa");
+            alerts.add("Emailová adresa není vyplněna, nebo je ve špatném formátu");
         }
-        student.setTelefon(telefonTextField.getText());
+
+        if (!telefonTextField.getText().equals("")) {
+            if (InputChecker.checkPhoneNumber(telefonTextField.getText())) {
+
+                student.setTelefon(telefonTextField.getText());
+            } else {
+                alerts.add("Telefon je ve špatném formátu");
+            }
+        }
         if (!zahranicniTextField.getText().equals("")) {
             boolean zahranicni;
             if (zahranicniTextField.getText().trim().equals("1")) {
@@ -130,60 +138,63 @@ public class EditStudentController
             }
             student.setZahranicni(zahranicni);
         } else {
-            alerts.add("Zahraniční student");
+            alerts.add("Hodnota, zda je student zahraniční není vyplněna, nebo není ve správném formátu");
         }
-        if (!xnameTextField.getText().equals("")) {
+        if (!xnameTextField.getText().equals("") && InputChecker.checkStringWithoutNumbers(xnameTextField.getText())) {
             if (student.isZahranicni()) {
                 student.setXname(null);
             } else {
                 student.setXname(xnameTextField.getText());
             }
         } else {
-            alerts.add("Xname");
+            alerts.add("Xname není vyplněno, nebo je ve špatném formátu");
         }
-        student.setAdmin(false);
 
         Adresa adresa = new Adresa();
-        if (!mestoTextField.getText().equals("")) {
+        if (!mestoTextField.getText().equals("") && InputChecker.checkStringWithoutNumbers(mestoTextField.getText())) {
             adresa.setMesto(mestoTextField.getText());
         } else {
-            alerts.add("Město");
+            alerts.add("Město není vyplněno, nebo je ve špatném formátu");
         }
-        if (!uliceTextField.getText().equals("")) {
+        if (!uliceTextField.getText().equals("") && InputChecker.checkStringWithoutNumbers(uliceTextField.getText())) {
             adresa.setUlice(uliceTextField.getText());
         } else {
-            alerts.add("Název");
+            alerts.add("Ulice není vyplněna, nebo je ve špatném formátu");
         }
-        if (!statTextField.getText().equals("")) {
+        if (!statTextField.getText().equals("") && InputChecker.checkStringWithoutNumbers(statniPrislusnostTextField.getText())) {
             adresa.setStat(statTextField.getText());
         } else {
-            alerts.add("Stát");
+            alerts.add("Stát není vyplněn, nebo je ve špatném formátu");
         }
-        if (!cisloPopisneTextField.getText().equals("")) {
+        if (!cisloPopisneTextField.getText().equals("") && InputChecker.isNumber(cisloPopisneTextField.getText())) {
             adresa.setCisloPopisne(Integer.parseInt(cisloPopisneTextField.getText()));
         } else {
-            alerts.add("Číslo");
+            alerts.add("Číslo popisné není vyplněno, nebo je ve špatném formátu");
         }
 
         adresa.setStudent(student);
-
         student.setAdresa(adresa);
 
-        if (alerts.size() == 0) {
-            studentService.saveStudent(student);
-            Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Student byl úspěšně upraven!");
+        if (studentService.findStudent(student.getRodneCislo()) == null) {
+            Alert alert = new Alert(Alert.AlertType.ERROR, "Tento student neexistuje, nelze jej tedy upravit!");
             alert.showAndWait();
         } else {
-            String alertString = "Musíte vyplnit pole:\n";
-            for (int i = 0; i < alerts.size(); i++) {
-                if (i == alerts.size() - 1) {
-                    alertString += alerts.get(i);
-                } else {
-                    alertString += alerts.get(i) + ", ";
+            if (alerts.size() == 0) {
+                studentService.saveStudent(student);
+                Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Student byl úspěšně upraven!");
+                alert.showAndWait();
+            } else {
+                String alertString = "Chyby:\n";
+                for (int i = 0; i < alerts.size(); i++) {
+                    if (i == alerts.size() - 1) {
+                        alertString += alerts.get(i);
+                    } else {
+                        alertString += alerts.get(i) + "\n";
+                    }
                 }
+                Alert alert = new Alert(Alert.AlertType.ERROR, alertString);
+                alert.showAndWait();
             }
-            Alert alert = new Alert(Alert.AlertType.ERROR, alertString);
-            alert.showAndWait();
         }
     }
 
@@ -194,13 +205,13 @@ public class EditStudentController
 
     @FXML
     public void vyhledatButtonAction(ActionEvent event) {
-        IStudentService studentService = (IStudentService) applicationContext.getBean("studentService");
-        String rodneCislo = studentiComboBox.getValue().toString().split("-")[1].trim();
-        Student foundStudent = studentService.findStudent(rodneCislo);
-        if (foundStudent == null) {
-            Alert alert = new Alert(Alert.AlertType.ERROR, "Musíš vybrat studenta k vyhledání!");
+        if (studentiComboBox.getValue() == null) {
+            Alert alert = new Alert(Alert.AlertType.ERROR, "Musíte vybrat studenta!");
             alert.showAndWait();
         } else {
+            IStudentService studentService = (IStudentService) applicationContext.getBean("studentService");
+            String rodneCislo = studentiComboBox.getValue().toString().split("-")[1].trim();
+            Student foundStudent = studentService.findStudent(rodneCislo);
             xnameTextField.setText(foundStudent.getXname());
             rodneCisloTextField.setText(foundStudent.getRodneCislo());
             jmenoTextField.setText(foundStudent.getJmeno());
@@ -217,8 +228,6 @@ public class EditStudentController
             uliceTextField.setText(foundStudent.getAdresa().getUlice());
             cisloPopisneTextField.setText(String.valueOf(foundStudent.getAdresa().getCisloPopisne()));
         }
-
-
     }
 
     @Override

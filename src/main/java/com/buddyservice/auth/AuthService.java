@@ -10,6 +10,12 @@ import java.security.NoSuchAlgorithmException;
 @Transactional
 public class AuthService implements IAuthService {
 
+    /**
+     * Returns MD5 hash of chosen String value
+     *
+     * @param toHash
+     * @return MD5 hash
+     */
     public String createMD5Hash(String toHash) {
         MessageDigest md = null;
         try {
@@ -22,7 +28,6 @@ public class AuthService implements IAuthService {
         }
         byte byteData[] = md != null ? md.digest() : new byte[0];
 
-        //convert the byte to hex format method 1
         StringBuilder sb = new StringBuilder();
         for (byte aByteData : byteData) {
             sb.append(Integer.toString((aByteData & 0xff) + 0x100, 16).substring(1));
@@ -30,5 +35,4 @@ public class AuthService implements IAuthService {
 
         return sb.toString();
     }
-
 }

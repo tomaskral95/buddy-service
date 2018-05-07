@@ -4,26 +4,32 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane fx:id="rootPane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="736.0" prefWidth="807.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vlozakci.FXMLDocumentController">
+<AnchorPane fx:id="rootPane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="715.0" prefWidth="935.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.buddyservice.gui.controller.DisplayActionsOfStudents">
     <children>
-        <Label fx:id="label" layoutX="126" layoutY="120" minHeight="16" minWidth="69" />
-      <TableView id="tabulkaAkce" layoutX="23.0" layoutY="65.0" prefHeight="629.0" prefWidth="357.0">
-        <columns>
-          <TableColumn prefWidth="75.0" text="C1" />
-          <TableColumn prefWidth="75.0" text="C2" />
-        </columns>
-      </TableView>
-      <HBox layoutX="23.0" layoutY="9.0" prefHeight="42.0" prefWidth="753.0" spacing="215.0">
-         <children>
-            <Button id="druhAkceBtn" fx:id="backButton" mnemonicParsing="false" onAction="#backButtonAction" prefHeight="43.0" prefWidth="126.0" text="Zpět" />
-            <Button id="terminBtn" fx:id="registrovaniStudentiButton" mnemonicParsing="false" onAction="#registrovaniStudentiButtonAction" prefHeight="25.0" prefWidth="151.0" text="Zaregistrovaní studenti" />
-         </children>
-      </HBox>
-      <TableView fx:id="tabulkaStudenti" layoutX="419.0" layoutY="65.0" prefHeight="629.0" prefWidth="357.0">
-         <columns>
-            <TableColumn prefWidth="75.0" text="C1" />
-            <TableColumn prefWidth="75.0" text="C2" />
-         </columns>
-      </TableView>
+        <TableView fx:id="tabulkaAkce" layoutX="23.0" layoutY="122.0" prefHeight="572.0" prefWidth="490.0">
+            <columns>
+                <TableColumn fx:id="idColumn" prefWidth="46.0" text="ID" />
+                <TableColumn fx:id="nazevColumn" prefWidth="87.0" text="Název" />
+                <TableColumn fx:id="popisColumn" prefWidth="82.0" text="Popis" />
+                <TableColumn fx:id="cenaColumn" prefWidth="68.0" text="Cena" />
+                <TableColumn fx:id="kapacitaColumn" prefWidth="92.0" text="Kapacita" />
+                <TableColumn fx:id="volnychMistColumn" prefWidth="104.0" text="Volných míst" />
+            </columns>
+        </TableView>
+        <HBox layoutX="23.0" layoutY="9.0" prefHeight="42.0" prefWidth="753.0" spacing="215.0">
+            <children>
+                <Button id="druhAkceBtn" fx:id="backButton" mnemonicParsing="false" onAction="#backButtonAction" prefHeight="43.0" prefWidth="126.0" text="Zpět" />
+            </children>
+        </HBox>
+        <TableView fx:id="tabulkaStudenti" layoutX="613.0" layoutY="122.0" prefHeight="572.0" prefWidth="300.0">
+            <columns>
+                <TableColumn fx:id="rodneCisloColumn" prefWidth="75.0" text="Rodné číslo" />
+                <TableColumn prefWidth="75.0" text="Xname" fx:id="xnameColumn" />
+                <TableColumn fx:id="jmenoColumn" prefWidth="75.0" text="Jméno" />
+                <TableColumn fx:id="prijmeniColumn" prefWidth="75.0" text="Příjmení" />
+            </columns>
+        </TableView>
+        <Button fx:id="vymazStudentaZAkceButton" layoutX="613.0" layoutY="81.0" mnemonicParsing="false" onAction="#vymazStudentButtonAction" prefHeight="25.0" prefWidth="300.0" text="Odeber studenta z akce" />
+          <Button id="terminBtn" fx:id="registrovaniStudentiButton" layoutX="535.0" layoutY="306.0" mnemonicParsing="false" onAction="#registrovaniStudentiButtonAction" prefHeight="25.0" prefWidth="58.0" text="&gt;&gt;" />
     </children>
 </AnchorPane>

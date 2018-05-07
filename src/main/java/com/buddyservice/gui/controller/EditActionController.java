@@ -20,13 +20,17 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
-import java.util.stream.Collectors;
 
-public class NewActionController
+public class EditActionController
         extends SwitchableController
         implements Initializable {
 
     private ApplicationContext applicationContext = Main.applicationContext;
+
+    private Long idAkce;
+
+    @FXML
+    public ComboBox vsechnyAkceComboBox;
 
     @FXML
     public AnchorPane rootPane;
@@ -67,13 +71,27 @@ public class NewActionController
     @FXML
     public ComboBox druhAkceComboBox;
 
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        IAkceService akceService = (IAkceService) applicationContext.getBean("akceService");
+
+        List<Akce> akce = akceService.findAll();
+        List<String> comboInformations = new ArrayList<>();
+        for (Akce a : akce) {
+            if (a.getNazev() != null && a.getIdAkce() != null) {
+                comboInformations.add(a.getNazev() + " - " + a.getIdAkce());
+            }
+        }
+        vsechnyAkceComboBox.getItems().addAll(comboInformations);
+    }
+
     @FXML
     public void backButtonAction(ActionEvent event) {
         proceedToNextPage("graphics/fxml/signPostAdmin.fxml", rootPane);
     }
 
     @FXML
-    public void saveButtonAction(ActionEvent event) {
+    public void editButtonAction(ActionEvent event) {
         IAkceService akceService = (IAkceService) applicationContext.getBean("akceService");
         IDruhAkceService druhAkceService = (IDruhAkceService) applicationContext.getBean("druhAkceService");
         IAdresaService adresaService = (IAdresaService) applicationContext.getBean("adresaService");
@@ -152,29 +170,54 @@ public class NewActionController
         }
         adresa.getAkce().add(akce);
         akce.setMisto(adresa);
-        if (alerts.size() == 0) {
-            adresaService.saveAdresa(adresa);
-            akceService.saveAkce(akce);
-            Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Akce byla úspěšně uložena!");
-            alert.showAndWait();
-        } else {
-            String alertString = "Chyby:\n";
-            for (int i = 0; i < alerts.size(); i++) {
-                if (i == alerts.size() - 1) {
-                    alertString += alerts.get(i);
-                } else {
-                    alertString += alerts.get(i) + "\n";
+
+        if (akceService.findAkceById(idAkce) != null) {
+            if (alerts.size() == 0) {
+                adresaService.saveAdresa(adresa);
+                akceService.saveAkce(akce);
+                Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Akce byla úspěšně uložena!");
+                alert.showAndWait();
+            } else {
+                String alertString = "Chyby:\n";
+                for (int i = 0; i < alerts.size(); i++) {
+                    if (i == alerts.size() - 1) {
+                        alertString += alerts.get(i);
+                    } else {
+                        alertString += alerts.get(i) + "\n";
+                    }
                 }
+                Alert alert = new Alert(Alert.AlertType.ERROR, alertString);
+                alert.showAndWait();
             }
-            Alert alert = new Alert(Alert.AlertType.ERROR, alertString);
+        } else {
+            Alert alert = new Alert(Alert.AlertType.ERROR, "Tato akce neexistuje, nelze ji tak upravit!");
             alert.showAndWait();
         }
+
     }
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        IDruhAkceService druhAkceService = (IDruhAkceService) applicationContext.getBean("druhAkceService");
-        List<DruhAkce> druhyAkce = druhAkceService.getDruhyAkce();
-        druhAkceComboBox.getItems().addAll(druhyAkce.stream().map(s -> s.getDruh()).collect(Collectors.toList()));
+    public void vyhledatButtonAction(ActionEvent event) {
+        if (vsechnyAkceComboBox.getValue() == null) {
+            Alert alert = new Alert(Alert.AlertType.ERROR, "Musíš první vybrat akci!");
+            alert.showAndWait();
+        } else {
+            Long idAkce = Long.valueOf(vsechnyAkceComboBox.getValue().toString().split("-")[1].trim());
+            this.idAkce = idAkce;
+            IAkceService akceService = (IAkceService) applicationContext.getBean("akceService");
+            Akce foundAkce = akceService.findAkceById(idAkce);
+
+            nazevTextField.setText(foundAkce.getNazev());
+            datumTextField.setText(foundAkce.getDatum());
+            casOdTextField.setText(foundAkce.getCasOd());
+            casDoTextField.setText(foundAkce.getCasDo());
+            popisTextField.setText(foundAkce.getPopis());
+            cenaTextField.setText(String.valueOf(foundAkce.getCena()));
+            maxPocetTextField.setText(String.valueOf(foundAkce.getKapacita()));
+            statTextField.setText(foundAkce.getMisto().getStat());
+            mestoTextField.setText(foundAkce.getMisto().getMesto());
+            uliceTextField.setText(foundAkce.getMisto().getUlice());
+            cisloPopisneTextField.setText(String.valueOf(foundAkce.getMisto().getCisloPopisne()));
+            druhAkceComboBox.setValue(foundAkce.getDruhAkce().getDruh());
+        }
     }
 }

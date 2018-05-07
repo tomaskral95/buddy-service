@@ -116,7 +116,7 @@ public class Akce {
         this.kapacita = kapacita;
     }
 
-    @ManyToMany(mappedBy = "akce")
+    @ManyToMany(mappedBy = "akce", fetch = FetchType.EAGER)
     public Set<Student> getStudenti() {
         if (studenti == null) {
             this.studenti = new HashSet<>();

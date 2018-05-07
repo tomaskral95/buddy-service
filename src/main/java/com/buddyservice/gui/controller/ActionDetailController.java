@@ -14,16 +14,12 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import org.springframework.context.ApplicationContext;
-import org.springframework.orm.jpa.JpaTransactionManager;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Query;
-import javax.transaction.TransactionManager;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.stream.Stream;
 
 public class ActionDetailController
         extends SwitchableController
@@ -151,19 +147,29 @@ public class ActionDetailController
             Alert alert = new Alert(Alert.AlertType.ERROR, "Musíš první vyhledat akci, na kterou chceš studenta zapsat!");
             alert.showAndWait();
         } else {
-            IStudentService studentService = (IStudentService) applicationContext.getBean("studentService");
             IAkceService akceService = (IAkceService) applicationContext.getBean("akceService");
-            EntityManagerFactory entityManagerFactory = (EntityManagerFactory) applicationContext.getBean("entityManagerFactory");
 
             Akce akceToRegister = akceService.findAkceById(Long.valueOf(idAkceTextField.getText()));
-            String rodneCislo = studentiComboBox.getValue().toString().split("-")[1].trim();
-            Student studentToAdd = studentService.findStudent(rodneCislo);
-            studentToAdd.getAkce().add(akceToRegister);
 
-            studentService.saveStudent(studentToAdd);
+            if (akceToRegister.getStudenti().size() <= akceToRegister.getKapacita()) {
+                IStudentService studentService = (IStudentService) applicationContext.getBean("studentService");
+                String rodneCislo = studentiComboBox.getValue().toString().split("-")[1].trim();
 
-            Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Student byl úspěšně zapsán!");
-            alert.showAndWait();
+                Student studentToAdd = studentService.findStudent(rodneCislo);
+                if (akceToRegister.getStudenti().stream().noneMatch(student -> student.getRodneCislo().equals(studentToAdd.getRodneCislo()))) {
+                    studentToAdd.getAkce().add(akceToRegister);
+                    studentService.saveStudent(studentToAdd);
+                    Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Student byl úspěšně zapsán!");
+                    alert.showAndWait();
+                } else {
+                    Alert alert = new Alert(Alert.AlertType.ERROR, "Tento student je již na akci zapsán");
+                    alert.showAndWait();
+                }
+            } else {
+                Alert alert = new Alert(Alert.AlertType.ERROR, "Kapacita této akce je již zaplněna");
+                alert.showAndWait();
+            }
+
         }
     }
 }

@@ -18,7 +18,9 @@
                 <Button fx:id="addActionButton" onAction="#addActionButtonAction" prefHeight="65.0" prefWidth="603.0" text="Vlož akci" />
                 <Button fx:id="displayStudentsButton" onAction="#displayStudentsButtonAction" prefHeight="65.0" prefWidth="603.0" text="Zobraz studenty" />
                 <Button fx:id="displayActionsButton" lineSpacing="2.0" onAction="#displayActionsButtonAction" prefHeight="65.0" prefWidth="603.0" text="Zobraz akce" />
-            <Button fx:id="editStudentButton" onAction="#editStudentButtonAction" prefHeight="65.0" prefWidth="603.0" text="Uprav studenta" />
+                <Button fx:id="editStudentButton" onAction="#editStudentButtonAction" prefHeight="65.0" prefWidth="603.0" text="Uprav studenta" />
+                <Button fx:id="editActionButton" onAction="#editActionButtonAction" prefHeight="65.0" prefWidth="603.0" text="Uprav akci" />
+                <Button fx:id="actionsAndStudents" onAction="#showActionsAndStudents" prefHeight="65.0" prefWidth="603.0" text="Zobraz akce a studenty" />
             </children>
             <opaqueInsets>
                 <Insets />

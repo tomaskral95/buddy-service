@@ -26,7 +26,7 @@ public class StudentService implements IStudentService {
 
     public void saveStudent(Student student) {
         try {
-            if (student.getHeslo() != null) {
+            if (student.getHeslo() != null && student.getHeslo().length() <= 16) {
                 student.setHeslo(authService.createMD5Hash(student.getHeslo()));
             }
         } catch (NoSuchAlgorithmException e) {
