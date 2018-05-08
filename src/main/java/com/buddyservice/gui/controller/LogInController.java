@@ -42,7 +42,7 @@ public class LogInController extends SwitchableController {
             if (loggedStudent.isAdmin()) {
                 proceedToNextPage("graphics/fxml/signPostAdmin.fxml", rootPane);
             } else {
-                // TODO NON ADMIN SIGNPOST
+                proceedToNextPage("graphics/fxml/signPostStudent.fxml", rootPane);
             }
         } else {
             Alert alert = new Alert(Alert.AlertType.ERROR, "Nesprávné přihlašovací údaje");

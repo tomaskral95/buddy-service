@@ -18,6 +18,7 @@ public class Akce {
     private double cena;
     private int kapacita;
     private Set<Student> studenti;
+    private int volnychMist;
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
@@ -128,4 +129,12 @@ public class Akce {
         this.studenti = studenti;
     }
 
+    @Transient
+    public int getVolnychMist() {
+        return getKapacita() - getStudenti().size();
+    }
+
+    public void setVolnychMist(int volnychMist) {
+        this.volnychMist = volnychMist;
+    }
 }

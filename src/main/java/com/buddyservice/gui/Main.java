@@ -15,6 +15,7 @@ public class Main extends Application {
     public static ApplicationContext applicationContext = new ClassPathXmlApplicationContext("jdbc-connection-context.xml");
     private static Student loggedStudent;
     private static CacheManager<String> cacheManager;
+    public static Stage stage;
 
     @Override
     public void start(Stage stage) throws Exception {
@@ -24,7 +25,7 @@ public class Main extends Application {
 
         Scene scene = new Scene(root);
         stage.setScene(scene);
-
+        Main.stage = stage;
         stage.show();
 
     }

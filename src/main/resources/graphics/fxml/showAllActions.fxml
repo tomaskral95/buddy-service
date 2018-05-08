@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+            prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.buddyservice.gui.controller.ShowAllActionsController">
+    <children>
+        <Button fx:id="backButton" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#backButtonAction"
+                prefHeight="35.0" prefWidth="83.0" text="Zpět"/>
+        <TableView fx:id="tabulkaAkce" layoutX="14.0" layoutY="67.0" prefHeight="323.0" prefWidth="574.0">
+            <columns>
+                <TableColumn fx:id="idColumn" prefWidth="46.0" text="ID"/>
+                <TableColumn fx:id="nazevColumn" prefWidth="87.0" text="Název"/>
+                <TableColumn fx:id="popisColumn" prefWidth="82.0" text="Popis"/>
+                <TableColumn fx:id="cenaColumn" prefWidth="68.0" text="Cena"/>
+                <TableColumn fx:id="kapacitaColumn" prefWidth="92.0" text="Kapacita"/>
+                <TableColumn fx:id="volnychMistColumn" prefWidth="104.0" text="Volných míst"/>
+            </columns>
+        </TableView>
+    </children>
+</AnchorPane>

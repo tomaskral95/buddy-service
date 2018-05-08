@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane fx:id="rootPane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="416.0" prefWidth="557.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.buddyservice.gui.controller.ShowProfileController">
+    <children>
+      <VBox layoutX="21.0" layoutY="74.0" prefHeight="316.0" prefWidth="330.0" spacing="5.0">
+         <children>
+            <Label text="Xname:" />
+            <Label text="Rodné číslo:" />
+            <Label text="Jméno:" />
+            <Label text="Příjmení:" />
+            <Label text="Titul:" />
+            <Label text="Datum narození:" />
+            <Label text="Pohlaví:" />
+            <Label text="Státní příslušnost:" />
+            <Label text="Telefon:" />
+            <Label text="Email:" />
+            <Label text="Stát:" />
+            <Label text="Město:" />
+            <Label text="Ulice:" />
+            <Label text="ČP:" />
+         </children>
+      </VBox>
+      <VBox layoutX="367.0" layoutY="74.0" prefHeight="316.0" prefWidth="313.0" spacing="5.0">
+         <children>
+            <Label text="[xname]" fx:id="xnameLabel" />
+            <Label fx:id="rodneCisloLabel" text="[xname]" />
+            <Label fx:id="jmenoLabel" text="[jmeno]" />
+            <Label fx:id="prijmeniLabel" text="[prijmeni]" />
+            <Label fx:id="titulLabel" text="[titul]" />
+            <Label fx:id="datumNarizeniLabel" text="[datumNarozeni]" />
+            <Label fx:id="pohlaviLabel" text="[pohlavi]" />
+            <Label fx:id="statniPrislusnostLabel" text="[statniPrislusnost]" />
+            <Label fx:id="telefonLabel" text="[telefon]" />
+            <Label fx:id="mailLabel" text="[mail]" />
+            <Label fx:id="statLabel" text="[stat]" />
+            <Label fx:id="mestoLabel" text="[město]" />
+            <Label fx:id="uliceLabel" text="[ulice]" />
+            <Label fx:id="cisloPopisneLabel" text="[CP]" />
+         </children>
+      </VBox>
+      <Button fx:id="backButton" layoutX="27.0" layoutY="21.0" mnemonicParsing="false" onAction="#backButtonAction" prefHeight="32.0" prefWidth="79.0" text="Zpět" />
+    </children>
+</AnchorPane>
