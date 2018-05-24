@@ -77,7 +77,7 @@ public class Akce {
         this.casDo = casDo;
     }
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
     @JoinColumn(name = "ID_ADRESA")
     public Adresa getMisto() {
         return misto;

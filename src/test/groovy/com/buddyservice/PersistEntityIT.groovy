@@ -5,7 +5,11 @@ import com.buddyservice.domain.Akce
 import com.buddyservice.domain.DruhAkce
 import com.buddyservice.domain.Pohlavi
 import com.buddyservice.domain.Student
+import com.buddyservice.repository.IAdresaRepository
+import com.buddyservice.repository.IAkceRepository
+import com.buddyservice.repository.IDruhAkceRepository
 import com.buddyservice.repository.IStudentRepository
+import com.buddyservice.service.IAkceService
 import com.buddyservice.service.IStudentService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.test.context.ContextConfiguration
@@ -20,19 +24,22 @@ class PersistEntityIT extends Specification {
     @Autowired
     private IStudentRepository studentRepository
 
+    @Autowired
+    private IAkceRepository akceRepository
+
+    @Autowired
+    private IDruhAkceRepository druhAkceRepository
+
+    @Autowired
+    private IAdresaRepository adresaRepository
+
     def "Test connection to db through JpaRepository"() {
         given: "Preparing data for database persist test"
             def adresa = new Adresa(
                     stat: "Ceska Republika",
                     mesto: "Praha",
                     ulice: "Nad Sazavou",
-                    cisloPopisne: 11
-            )
-            def adresa2 = new Adresa(
-                    stat: "Česká Republika",
-                    mesto: "Praha",
-                    ulice: "Za rohem",
-                    cisloPopisne: 22
+                    cisloPopisne: 10
             )
             def druhAkce = new DruhAkce(
                     druh: "Volný čas"
@@ -77,7 +84,10 @@ class PersistEntityIT extends Specification {
                     admin: true
             )
         when: "Persist and select from database"
+            druhAkceRepository.save(druhAkce)
+            akceRepository.saveAll(akce)
             studentService.saveStudent(student)
+
             def foundStudents = studentRepository.findAll()
             def obtainedStudent = foundStudents.get(0)
         then: "Compare persisted and obtained object"

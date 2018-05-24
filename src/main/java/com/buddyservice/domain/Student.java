@@ -24,6 +24,8 @@ public class Student {
     private boolean zahranicni;
     private Set<Akce> akce;
     private boolean admin;
+    private Student buddy;
+    private Set<Student> students;
 
     @Id
     @Column(name = "ROCNE_CISLO")
@@ -191,5 +193,30 @@ public class Student {
 
     public void setAdmin(boolean admin) {
         this.admin = admin;
+    }
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "BUDDY_ID")
+    public Student getBuddy() {
+        return buddy;
+    }
+
+    public void setBuddy(Student buddy) {
+        this.buddy = buddy;
+    }
+
+    @OneToMany(mappedBy = "buddy")
+    public Set<Student> getStudents() {
+        if (students == null) {
+            students = new HashSet<>();
+        }
+        return students;
+    }
+
+    public void setStudents(Set<Student> students) {
+        for (Student s : students) {
+            s.setBuddy(this);
+        }
+        this.students = students;
     }
 }

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane fx:id="rootPane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="725.0" prefWidth="765.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.buddyservice.gui.controller.AddBuddyController">
+    <children>
+        <TableView fx:id="tabulkaBuddies" layoutX="23.0" layoutY="122.0" prefHeight="572.0" prefWidth="307.0">
+            <columns>
+                <TableColumn fx:id="rodneCislo1Column" prefWidth="75.0" text="Rodné číslo" />
+                <TableColumn prefWidth="75.0" text="Xname" fx:id="xname1Column" />
+                <TableColumn fx:id="jmeno1Column" prefWidth="75.0" text="Jméno" />
+                <TableColumn fx:id="prijmeni1Column" prefWidth="81.0" text="Příjmení" />
+            </columns>
+        </TableView>
+          <Button id="druhAkceBtn" fx:id="backButton" layoutX="23.0" layoutY="21.0" mnemonicParsing="false" onAction="#backButtonAction" prefHeight="43.0" prefWidth="126.0" text="Zpět" />
+        <TableView fx:id="tabulkaZahranicni" layoutX="440.0" layoutY="122.0" prefHeight="572.0" prefWidth="300.0">
+            <columns>
+                <TableColumn fx:id="rodneCisloColumn" prefWidth="75.0" text="Rodné číslo" />
+                <TableColumn prefWidth="75.0" text="Xname" fx:id="xnameColumn" />
+                <TableColumn fx:id="jmenoColumn" prefWidth="75.0" text="Jméno" />
+                <TableColumn fx:id="prijmeniColumn" prefWidth="75.0" text="Příjmení" />
+            </columns>
+        </TableView>
+          <Button id="terminBtn" fx:id="buddyhoStudentiButton" layoutX="354.0" layoutY="234.0" mnemonicParsing="false" onAction="#buddyhoStudentiButtonAction" prefHeight="25.0" prefWidth="58.0" text="&gt;&gt;" />
+      <ComboBox fx:id="zahranicniComboBox" layoutX="440.0" layoutY="5.0" prefHeight="25.0" prefWidth="300.0" promptText="Zahraniční studenti" />
+      <Button fx:id="addtoBuddyButton" layoutX="440.0" layoutY="42.0" mnemonicParsing="false" onAction="#addToBuddyButtonAction" prefHeight="25.0" prefWidth="300.0" text="Přiřadit buddymu" />
+      <Label layoutX="143.0" layoutY="84.0" text="Buddies">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="508.0" layoutY="84.0" text="Zahraniční studenti">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+    </children>
+</AnchorPane>

@@ -47,7 +47,6 @@ public class StudentService implements IStudentService {
         } catch (NoSuchAlgorithmException e) {
             System.out.println("Zvoleno nesprávné kódování");
         }
-
         return foundStudent.getHeslo().equals(md5Pass) && foundStudent.getRodneCislo().equals(rodneCislo);
     }
 
@@ -58,6 +57,16 @@ public class StudentService implements IStudentService {
     @Override
     public List<Student> findAllStudents() {
         return studentRepository.findAll();
+    }
+
+    @Override
+    public List<Student> zahranicniStudeni(Student student) {
+        return studentRepository.zahranicniStudeni(student);
+    }
+
+    @Override
+    public List<Student> findBuddies() {
+        return studentRepository.findBuddies();
     }
 
 }
