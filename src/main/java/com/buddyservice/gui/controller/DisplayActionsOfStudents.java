@@ -74,16 +74,21 @@ public class DisplayActionsOfStudents extends SwitchableController implements In
     public void registrovaniStudentiButtonAction(ActionEvent event) {
         tabulkaStudenti.getItems().clear();
         IAkceService akceService = (IAkceService) applicationContext.getBean("akceService");
-        Akce selectedAkce = tabulkaAkce.getSelectionModel().getSelectedItem();
-        Set<Student> students = akceService.findAkceById(selectedAkce.getIdAkce()).getStudenti();
-        ObservableList<Student> studentsObservableList = FXCollections.observableArrayList();
-        studentsObservableList.addAll(students);
+        if (tabulkaAkce.getSelectionModel().getSelectedItem() != null) {
+            Akce selectedAkce = tabulkaAkce.getSelectionModel().getSelectedItem();
+            Set<Student> students = akceService.findAkceById(selectedAkce.getIdAkce()).getStudenti();
+            ObservableList<Student> studentsObservableList = FXCollections.observableArrayList();
+            studentsObservableList.addAll(students);
 
-        tabulkaStudenti.setItems(studentsObservableList);
-        rodneCisloColumn.setCellValueFactory(new PropertyValueFactory<>("rodneCislo"));
-        xnameColumn.setCellValueFactory(new PropertyValueFactory<>("xname"));
-        jmenoColumn.setCellValueFactory(new PropertyValueFactory<>("jmeno"));
-        prijmeniColumn.setCellValueFactory(new PropertyValueFactory<>("prijmeni"));
+            tabulkaStudenti.setItems(studentsObservableList);
+            rodneCisloColumn.setCellValueFactory(new PropertyValueFactory<>("rodneCislo"));
+            xnameColumn.setCellValueFactory(new PropertyValueFactory<>("xname"));
+            jmenoColumn.setCellValueFactory(new PropertyValueFactory<>("jmeno"));
+            prijmeniColumn.setCellValueFactory(new PropertyValueFactory<>("prijmeni"));
+        } else {
+            Alert alert = new Alert(Alert.AlertType.ERROR, "Musíš vybrat akci!");
+            alert.showAndWait();
+        }
     }
 
     @Override
@@ -105,13 +110,18 @@ public class DisplayActionsOfStudents extends SwitchableController implements In
     @FXML
     public void vymazStudentButtonAction(ActionEvent event) {
         IStudentService studentService = (IStudentService) applicationContext.getBean("studentService");
-        Student selectedStudent = tabulkaStudenti.getSelectionModel().getSelectedItem();
-        Student foundStudent = studentService.findStudent(selectedStudent.getRodneCislo());
-        Akce selectedAkce = tabulkaAkce.getSelectionModel().getSelectedItem();
-        foundStudent.getAkce().removeIf(akce -> akce.getIdAkce() == selectedAkce.getIdAkce());
-        studentService.saveStudent(foundStudent);
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Student byl z akce úspěšně odebrán");
-        alert.showAndWait();
-        tabulkaStudenti.getItems().removeIf(student -> student.getRodneCislo().equals(foundStudent.getRodneCislo()));
+        if (tabulkaStudenti.getSelectionModel().getSelectedItem() != null) {
+            Student selectedStudent = tabulkaStudenti.getSelectionModel().getSelectedItem();
+            Student foundStudent = studentService.findStudent(selectedStudent.getRodneCislo());
+            Akce selectedAkce = tabulkaAkce.getSelectionModel().getSelectedItem();
+            foundStudent.getAkce().removeIf(akce -> akce.getIdAkce() == selectedAkce.getIdAkce());
+            studentService.saveStudent(foundStudent);
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Student byl z akce úspěšně odebrán");
+            alert.showAndWait();
+            tabulkaStudenti.getItems().removeIf(student -> student.getRodneCislo().equals(foundStudent.getRodneCislo()));
+        } else {
+            Alert alert = new Alert(Alert.AlertType.ERROR, "Musíš první zvolit studenta!");
+            alert.showAndWait();
+        }
     }
 }

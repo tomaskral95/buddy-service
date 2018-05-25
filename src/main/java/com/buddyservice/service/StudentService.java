@@ -60,13 +60,18 @@ public class StudentService implements IStudentService {
     }
 
     @Override
-    public List<Student> zahranicniStudeni(Student student) {
-        return studentRepository.zahranicniStudeni(student);
+    public List<Student> findStudentsOfBuddy(Student student) {
+        return studentRepository.findStudentsOfBuddy(student);
     }
 
     @Override
     public List<Student> findBuddies() {
         return studentRepository.findBuddies();
+    }
+
+    @Override
+    public List<Student> findAllForeignStudents() {
+        return studentRepository.findAllForeignStudents();
     }
 
 }

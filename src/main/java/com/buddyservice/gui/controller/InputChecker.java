@@ -3,7 +3,15 @@ package com.buddyservice.gui.controller;
 public class InputChecker {
 
     public static boolean checkStringWithoutNumbers(String input) {
-        if (input.matches(".*\\d+.*") || input.length() < 3) {
+        if (input.matches(".*\\d+.*") || input.length() < 2) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    public static boolean checkXname(String input) {
+        if (input.matches(".{4}\\d{2}")) {
             return false;
         } else {
             return true;

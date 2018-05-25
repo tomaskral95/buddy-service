@@ -15,9 +15,12 @@ public interface IStudentRepository extends JpaRepository<Student, Long> {
     Student findStudentByRodneCislo(String rodneCislo);
 
     @Query("select s from Student s where s.buddy = :student")
-    List<Student> zahranicniStudeni(@Param("student") Student student);
+    List<Student> findStudentsOfBuddy(@Param("student") Student student);
 
     @Query("select s from Student s where s.zahranicni = 0")
     List<Student> findBuddies();
+
+    @Query("select s from Student s where s.zahranicni = 1")
+    List<Student> findAllForeignStudents();
 
 }

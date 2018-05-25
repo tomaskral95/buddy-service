@@ -66,4 +66,8 @@ public class SignPostAdminController
     public void editActionButtonAction(ActionEvent event) {
         proceedToNextPage("graphics/fxml/editAction.fxml", rootPane);
     }
+
+    public void priradBuddyhoButtonAction(ActionEvent event) {
+        proceedToNextPage("graphics/fxml/setBuddy.fxml", rootPane);
+    }
 }

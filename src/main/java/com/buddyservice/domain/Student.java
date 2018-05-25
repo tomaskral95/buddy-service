@@ -143,7 +143,7 @@ public class Student {
         this.zahranicni = zahranicni;
     }
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany
     @JoinTable(
             name = "STUDENT_AKCE",
             joinColumns = {@JoinColumn(name = "RODNE_CISLO")},

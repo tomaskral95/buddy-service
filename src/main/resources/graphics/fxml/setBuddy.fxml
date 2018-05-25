@@ -5,7 +5,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane fx:id="rootPane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="725.0" prefWidth="765.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.buddyservice.gui.controller.AddBuddyController">
+<AnchorPane fx:id="rootPane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="764.0" prefWidth="781.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.buddyservice.gui.controller.AddBuddyController">
     <children>
         <TableView fx:id="tabulkaBuddies" layoutX="23.0" layoutY="122.0" prefHeight="572.0" prefWidth="307.0">
             <columns>
@@ -19,7 +19,7 @@
         <TableView fx:id="tabulkaZahranicni" layoutX="440.0" layoutY="122.0" prefHeight="572.0" prefWidth="300.0">
             <columns>
                 <TableColumn fx:id="rodneCisloColumn" prefWidth="75.0" text="Rodné číslo" />
-                <TableColumn prefWidth="75.0" text="Xname" fx:id="xnameColumn" />
+                <TableColumn fx:id="statniPrislusnost" prefWidth="75.0" text="Stát. příslušnost" />
                 <TableColumn fx:id="jmenoColumn" prefWidth="75.0" text="Jméno" />
                 <TableColumn fx:id="prijmeniColumn" prefWidth="75.0" text="Příjmení" />
             </columns>
@@ -37,5 +37,6 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
+      <Button id="terminBtn" fx:id="odeberStudentaButton" layoutX="354.0" layoutY="282.0" mnemonicParsing="false" onAction="#odeberStudentaButtonAction" prefHeight="25.0" prefWidth="58.0" text="X" />
     </children>
 </AnchorPane>

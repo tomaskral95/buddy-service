@@ -7,12 +7,12 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane fx:id="rootPane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.buddyservice.gui.controller.SignPostAdminController">
+<AnchorPane fx:id="rootPane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="727.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.buddyservice.gui.controller.SignPostAdminController">
     <children>
         <Label id="label" layoutX="23.0" layoutY="31.0" minHeight="16" minWidth="69" text="Přihlášen: " />
         <Button id="odhlasitBtn" fx:id="logOutButton" layoutX="532.0" layoutY="14.0" onAction="#logOutButtonAction" prefHeight="19.0" prefWidth="154.0" text="Odhlásit" />
         <Label id="xnameLabel" layoutX="82.0" layoutY="31.0" minHeight="16" minWidth="69" text="[edit xname]" fx:id="xnameLabel" />
-        <VBox layoutX="49.0" layoutY="131.0" prefHeight="325.0" prefWidth="603.0" spacing="5.0">
+        <VBox layoutX="49.0" layoutY="131.0" prefHeight="342.0" prefWidth="603.0" spacing="5.0">
             <children>
                 <Button fx:id="newStudentButton" onAction="#newStudentButtonAction" prefHeight="65.0" prefWidth="603.0" text="Vlož studenta" />
                 <Button fx:id="addActionButton" onAction="#addActionButtonAction" prefHeight="65.0" prefWidth="603.0" text="Vlož akci" />
@@ -21,6 +21,7 @@
                 <Button fx:id="editStudentButton" onAction="#editStudentButtonAction" prefHeight="65.0" prefWidth="603.0" text="Uprav studenta" />
                 <Button fx:id="editActionButton" onAction="#editActionButtonAction" prefHeight="65.0" prefWidth="603.0" text="Uprav akci" />
                 <Button fx:id="actionsAndStudents" onAction="#showActionsAndStudents" prefHeight="65.0" prefWidth="603.0" text="Zobraz akce a studenty" />
+            <Button fx:id="priradBuddyhoButton" onAction="#priradBuddyhoButtonAction" prefHeight="65.0" prefWidth="603.0" text="Přiřaď k buddymu" />
             </children>
             <opaqueInsets>
                 <Insets />

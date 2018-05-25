@@ -10,6 +10,7 @@ public interface IStudentService {
     boolean authenticateStudent(String rodneCislo, String heslo);
     Student findStudent(String rodneCislo);
     List<Student> findAllStudents();
-    List<Student> zahranicniStudeni(Student student);
+    List<Student> findStudentsOfBuddy(Student student);
     List<Student> findBuddies();
+    List<Student> findAllForeignStudents();
 }
