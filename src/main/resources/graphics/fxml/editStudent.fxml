@@ -4,7 +4,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane fx:id="rootPane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="601.0" prefWidth="784.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.buddyservice.gui.controller.EditStudentController">
+<AnchorPane fx:id="rootPane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="651.0" prefWidth="824.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.buddyservice.gui.controller.EditStudentController">
     <children>
         <Button fx:id="upravitButton" layoutX="540.0" layoutY="413.0" onAction="#upravitButtonAction" prefHeight="71.0" prefWidth="230.0" text="Upravit" />
         <Button fx:id="backButton" layoutX="540.0" layoutY="498.0" onAction="#backButtonAction" prefHeight="71.0" prefWidth="230.0" text="Zpět" />

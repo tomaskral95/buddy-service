@@ -6,7 +6,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane fx:id="rootPane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="518.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.buddyservice.gui.controller.EditActionController">
+<AnchorPane fx:id="rootPane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="548.0" prefWidth="740.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.buddyservice.gui.controller.EditActionController">
     <children>
         <Button id="ulozBtn" fx:id="backButton" layoutX="474.0" layoutY="392.0" onAction="#backButtonAction" prefHeight="71.0" prefWidth="212.0" text="Zpět" />
         <Button id="ulozBtn" fx:id="editButton" layoutX="474.0" layoutY="303.0" onAction="#editButtonAction" prefHeight="71.0" prefWidth="212.0" text="Uprav" />

@@ -7,7 +7,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane fx:id="rootPane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="727.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.buddyservice.gui.controller.SignPostAdminController">
+<AnchorPane fx:id="rootPane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="727.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.buddyservice.gui.controller.SignPostAdminController">
     <children>
         <Label id="label" layoutX="23.0" layoutY="31.0" minHeight="16" minWidth="69" text="Přihlášen: " />
         <Button id="odhlasitBtn" fx:id="logOutButton" layoutX="532.0" layoutY="14.0" onAction="#logOutButtonAction" prefHeight="19.0" prefWidth="154.0" text="Odhlásit" />
