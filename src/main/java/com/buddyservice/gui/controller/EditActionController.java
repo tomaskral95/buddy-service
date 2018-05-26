@@ -20,6 +20,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.stream.Collectors;
 
 public class EditActionController
         extends SwitchableController
@@ -83,6 +84,10 @@ public class EditActionController
             }
         }
         vsechnyAkceComboBox.getItems().addAll(comboInformations);
+
+        IDruhAkceService druhAkceService = (IDruhAkceService) applicationContext.getBean("druhAkceService");
+        List<DruhAkce> druhyAkce = druhAkceService.getDruhyAkce();
+        druhAkceComboBox.getItems().addAll(druhyAkce.stream().map(s -> s.getDruh()).collect(Collectors.toList()));
     }
 
     @FXML
