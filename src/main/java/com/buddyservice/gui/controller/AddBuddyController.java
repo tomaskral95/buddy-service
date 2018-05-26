@@ -27,40 +27,40 @@ public class AddBuddyController
     private ApplicationContext applicationContext = Main.applicationContext;
 
     @FXML
-    public AnchorPane rootPane;
+    private AnchorPane rootPane;
 
     @FXML
-    public TableView<Student> tabulkaZahranicni;
+    private TableView<Student> tabulkaZahranicni;
 
     @FXML
-    public TableView<Student> tabulkaBuddies;
+    private TableView<Student> tabulkaBuddies;
 
     @FXML
-    public TableColumn rodneCislo1Column;
+    private TableColumn rodneCislo1Column;
 
     @FXML
-    public TableColumn xname1Column;
+    private TableColumn xname1Column;
 
     @FXML
-    public TableColumn jmeno1Column;
+    private TableColumn jmeno1Column;
 
     @FXML
-    public TableColumn prijmeni1Column;
+    private TableColumn prijmeni1Column;
 
     @FXML
-    public TableColumn rodneCisloColumn;
+    private TableColumn rodneCisloColumn;
 
     @FXML
-    public TableColumn statniPrislusnost;
+    private TableColumn statniPrislusnost;
 
     @FXML
-    public TableColumn jmenoColumn;
+    private TableColumn jmenoColumn;
 
     @FXML
-    public TableColumn prijmeniColumn;
+    private TableColumn prijmeniColumn;
 
     @FXML
-    public ComboBox zahranicniComboBox;
+    private ComboBox zahranicniComboBox;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {

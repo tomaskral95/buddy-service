@@ -26,58 +26,58 @@ public class StudentDetailController
     private ApplicationContext applicationContext = Main.applicationContext;
 
     @FXML
-    public AnchorPane rootPane;
+    private AnchorPane rootPane;
 
     @FXML
-    public Label xnameLabel;
+    private Label xnameLabel;
 
     @FXML
-    public Label jmenoLabel;
+    private Label jmenoLabel;
 
     @FXML
-    public Label prijmeniLabel;
+    private Label prijmeniLabel;
 
     @FXML
-    public Label titulLabel;
+    private Label titulLabel;
 
     @FXML
-    public Label datumNarizeniLabel;
+    private Label datumNarizeniLabel;
 
     @FXML
-    public Label pohlaviLabel;
+    private Label pohlaviLabel;
 
     @FXML
-    public Label statniPrislusnostLabel;
+    private Label statniPrislusnostLabel;
 
     @FXML
-    public Label telefonLabel;
+    private Label telefonLabel;
 
     @FXML
-    public Label mailLabel;
+    private Label mailLabel;
 
     @FXML
-    public Label statLabel;
+    private Label statLabel;
 
     @FXML
-    public Label mestoLabel;
+    private Label mestoLabel;
 
     @FXML
-    public Label uliceLabel;
+    private Label uliceLabel;
 
     @FXML
-    public Label cisloPopisneLabel;
+    private Label cisloPopisneLabel;
 
     @FXML
-    public TextField rodneCisloTextField;
+    private TextField rodneCisloTextField;
 
     @FXML
-    public Label findStatusLabel;
+    private Label findStatusLabel;
 
     @FXML
-    public ComboBox studentListComboBox;
+    private ComboBox studentListComboBox;
 
     @FXML
-    public ImageView photoImageView;
+    private ImageView photoImageView;
 
     @FXML
     public void findButtonAction(ActionEvent event) {

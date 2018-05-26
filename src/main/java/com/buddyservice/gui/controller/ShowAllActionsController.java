@@ -25,28 +25,28 @@ public class ShowAllActionsController
     private ApplicationContext applicationContext = Main.applicationContext;
 
     @FXML
-    public TableColumn idColumn;
+    private TableColumn idColumn;
 
     @FXML
-    public TableColumn nazevColumn;
+    private TableColumn nazevColumn;
 
     @FXML
-    public TableColumn popisColumn;
+    private TableColumn popisColumn;
 
     @FXML
-    public TableColumn cenaColumn;
+    private TableColumn cenaColumn;
 
     @FXML
-    public TableColumn kapacitaColumn;
+    private TableColumn kapacitaColumn;
 
     @FXML
-    public TableColumn volnychMistColumn;
+    private TableColumn volnychMistColumn;
 
     @FXML
-    public AnchorPane rootPane;
+    private AnchorPane rootPane;
 
     @FXML
-    public TableView<Akce> tabulkaAkce;
+    private TableView<Akce> tabulkaAkce;
 
     @FXML
     public void backButtonAction(ActionEvent event) {

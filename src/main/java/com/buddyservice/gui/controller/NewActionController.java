@@ -29,43 +29,43 @@ public class NewActionController
     private ApplicationContext applicationContext = Main.applicationContext;
 
     @FXML
-    public AnchorPane rootPane;
+    private AnchorPane rootPane;
 
     @FXML
-    public TextField nazevTextField;
+    private TextField nazevTextField;
 
     @FXML
-    public TextField datumTextField;
+    private TextField datumTextField;
 
     @FXML
-    public TextField casOdTextField;
+    private TextField casOdTextField;
 
     @FXML
-    public TextField casDoTextField;
+    private TextField casDoTextField;
 
     @FXML
-    public TextField popisTextField;
+    private TextField popisTextField;
 
     @FXML
-    public TextField cenaTextField;
+    private TextField cenaTextField;
 
     @FXML
-    public TextField maxPocetTextField;
+    private TextField maxPocetTextField;
 
     @FXML
-    public TextField statTextField;
+    private TextField statTextField;
 
     @FXML
-    public TextField mestoTextField;
+    private TextField mestoTextField;
 
     @FXML
-    public TextField uliceTextField;
+    private TextField uliceTextField;
 
     @FXML
-    public TextField cisloPopisneTextField;
+    private TextField cisloPopisneTextField;
 
     @FXML
-    public ComboBox druhAkceComboBox;
+    private ComboBox druhAkceComboBox;
 
     @FXML
     public void backButtonAction(ActionEvent event) {

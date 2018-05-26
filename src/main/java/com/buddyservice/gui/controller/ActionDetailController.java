@@ -27,40 +27,40 @@ public class ActionDetailController
     private ApplicationContext applicationContext = Main.applicationContext;
 
     @FXML
-    public ComboBox studentiComboBox;
+    private ComboBox studentiComboBox;
 
     @FXML
-    public AnchorPane rootPane;
+    private AnchorPane rootPane;
 
     @FXML
-    public Label nazevLabel;
+    private Label nazevLabel;
 
     @FXML
-    public Label casOdLabel;
+    private Label casOdLabel;
 
     @FXML
-    public Label casDoLabel;
+    private Label casDoLabel;
 
     @FXML
-    public Label mistoLabel;
+    private Label mistoLabel;
 
     @FXML
-    public Label popisLabel;
+    private Label popisLabel;
 
     @FXML
-    public Label cenaLabel;
+    private Label cenaLabel;
 
     @FXML
-    public Label maxUcastLabel;
+    private Label maxUcastLabel;
 
     @FXML
-    public ComboBox akceComboBox;
+    private ComboBox akceComboBox;
 
     @FXML
-    public Label findStatusLabel;
+    private Label findStatusLabel;
 
     @FXML
-    public TextField idAkceTextField;
+    private TextField idAkceTextField;
 
     @FXML
     public void findButtonAction(ActionEvent event) {

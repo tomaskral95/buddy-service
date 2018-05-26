@@ -28,55 +28,55 @@ public class EditStudentController
     private ApplicationContext applicationContext = Main.applicationContext;
 
     @FXML
-    public ComboBox studentiComboBox;
+    private ComboBox studentiComboBox;
 
     @FXML
-    public AnchorPane rootPane;
+    private AnchorPane rootPane;
 
     @FXML
-    public TextField xnameTextField;
+    private TextField xnameTextField;
 
     @FXML
-    public TextField jmenoTextField;
+    private TextField jmenoTextField;
 
     @FXML
-    public TextField prijmeniTextField;
+    private TextField prijmeniTextField;
 
     @FXML
-    public TextField titulTextField;
+    private TextField titulTextField;
 
     @FXML
-    public TextField datumNarozeniTextField;
+    private TextField datumNarozeniTextField;
 
     @FXML
-    public TextField pohlaviTextField;
+    private TextField pohlaviTextField;
 
     @FXML
-    public TextField statniPrislusnostTextField;
+    private TextField statniPrislusnostTextField;
 
     @FXML
-    public TextField telefonTextField;
+    private TextField telefonTextField;
 
     @FXML
-    public TextField emailTextField;
+    private TextField emailTextField;
 
     @FXML
-    public TextField zahranicniTextField;
+    private TextField zahranicniTextField;
 
     @FXML
-    public TextField statTextField;
+    private TextField statTextField;
 
     @FXML
-    public TextField mestoTextField;
+    private TextField mestoTextField;
 
     @FXML
-    public TextField uliceTextField;
+    private TextField uliceTextField;
 
     @FXML
-    public TextField cisloPopisneTextField;
+    private TextField cisloPopisneTextField;
 
     @FXML
-    public TextField rodneCisloTextField;
+    private TextField rodneCisloTextField;
 
     @FXML
     public void upravitButtonAction(ActionEvent event) {

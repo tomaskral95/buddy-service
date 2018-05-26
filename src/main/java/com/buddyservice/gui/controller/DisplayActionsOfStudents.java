@@ -27,43 +27,43 @@ public class DisplayActionsOfStudents extends SwitchableController implements In
     private ApplicationContext applicationContext = Main.applicationContext;
 
     @FXML
-    public TableColumn rodneCisloColumn;
+    private TableColumn rodneCisloColumn;
 
     @FXML
-    public TableColumn xnameColumn;
+    private TableColumn xnameColumn;
 
     @FXML
-    public TableColumn jmenoColumn;
+    private TableColumn jmenoColumn;
 
     @FXML
-    public TableColumn prijmeniColumn;
+    private TableColumn prijmeniColumn;
 
     @FXML
-    public TableColumn idColumn;
+    private TableColumn idColumn;
 
     @FXML
-    public TableColumn nazevColumn;
+    private TableColumn nazevColumn;
 
     @FXML
-    public TableColumn popisColumn;
+    private TableColumn popisColumn;
 
     @FXML
-    public TableColumn cenaColumn;
+    private TableColumn cenaColumn;
 
     @FXML
-    public TableColumn kapacitaColumn;
+    private TableColumn kapacitaColumn;
 
     @FXML
-    public TableColumn volnychMistColumn;
+    private TableColumn volnychMistColumn;
 
     @FXML
-    public AnchorPane rootPane;
+    private AnchorPane rootPane;
 
     @FXML
-    public TableView<Akce> tabulkaAkce;
+    private TableView<Akce> tabulkaAkce;
 
     @FXML
-    public TableView<Student> tabulkaStudenti;
+    private TableView<Student> tabulkaStudenti;
 
     @FXML
     public void backButtonAction(ActionEvent event) {
