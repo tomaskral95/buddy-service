@@ -3,6 +3,10 @@ package com.buddyservice.cache;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Generická třída poskytující možnost ukládat objekty zvoleného typu T do mapy s klíčem typu String.
+ * @param <T>
+ */
 public class CacheManager<T> {
 
     private Map<String, T> cachedData;

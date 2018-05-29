@@ -23,16 +23,24 @@ public interface IStudentRepository extends JpaRepository<Student, Long> {
     Student findStudentByRodneCislo(String rodneCislo);
 
     /**
-     * Vrátí kolekci studentů, kteří náleží buddymu, který byl zadán jako parametr funkce
+     * Vrátí kolekci zahraničních studentů, kteří náleží buddymu, který byl zadán jako parametr metody.
      * @param student
      * @return Kolekce objektů entity Student
      */
     @Query("select s from Student s where s.buddy = :student")
     List<Student> findStudentsOfBuddy(@Param("student") Student student);
 
+    /**
+     * Vrátí kolekci studentů, kteří nejsou zahraniční. Tzn. hodnota zahranicni = 0.
+     * @return Kolekce objektů zahraničních studentů (entit třídy Student, kde zahranicni = 0)
+     */
     @Query("select s from Student s where s.zahranicni = 0")
     List<Student> findBuddies();
 
+    /**
+     * Vrátí kolekci zahraničních studentů. Tzn. hodnota zahranicni = 1.
+     * @return Kolekce objektů zahraničních studentů (entit třídy Student, kde zahranicni = 1)
+     */
     @Query("select s from Student s where s.zahranicni = 1")
     List<Student> findAllForeignStudents();
 

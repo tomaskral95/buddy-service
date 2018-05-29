@@ -6,8 +6,17 @@ import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
 
+/**
+ * Abstraktní třída, které je každý Controller potomkem, umožňuje jednoduché použití metody pro přepnutí mezi okny aplikace.
+ */
 abstract class SwitchableController {
 
+    /**
+     * Metoda načte AnchorPane nového okna, nastaví dle něho velikost dosavadního stage a následně přehraje obsah
+     * již existující stage novým.
+     * @param url
+     * @param rootPane
+     */
     void proceedToNextPage(String url, AnchorPane rootPane) {
         AnchorPane newAnchorPane = null;
         try {

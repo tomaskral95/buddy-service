@@ -10,12 +10,6 @@ import java.security.NoSuchAlgorithmException;
 @Transactional
 public class AuthService implements IAuthService {
 
-    /**
-     * Returns MD5 hash of chosen String value
-     *
-     * @param toHash
-     * @return MD5 hash
-     */
     public String createMD5Hash(String toHash) {
         MessageDigest md = null;
         try {

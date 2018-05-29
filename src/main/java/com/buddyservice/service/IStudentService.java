@@ -5,6 +5,9 @@ import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 
+/**
+ * Rozhraní servisní třídy pro práci s entitou Student.
+ */
 public interface IStudentService {
     void saveStudent(Student student);
     boolean authenticateStudent(String rodneCislo, String heslo);
